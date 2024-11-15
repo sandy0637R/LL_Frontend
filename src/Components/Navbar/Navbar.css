@@ -1,0 +1,29 @@
+.nav-main{
+    display: flex;
+    background-color: var(--dark_grey);
+    color: var(--white);
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo{
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+.nav-ul{
+    display: flex;
+    margin-right: 20px;
+}
+
+.nav-li{
+    padding: 8px 15px;
+    margin: 0px 2px;
+}
+
+.nav-li:hover{
+    background-color: black;
+    color: yellow;
+}
