@@ -5,6 +5,8 @@ import Property from "./Pages/Property/Property";
 import Documents from "./Pages/Documents/Documents";
 import Maintainence from "./Pages/Maintainence/Maintainence";
 import Login from "./Pages/Login/Login";
+import Create, { CreateAction } from "./Pages/Create/Create";
+import Footer from "./Components/Footer/Footer";
 
 function App() {
 
@@ -25,6 +27,10 @@ function App() {
           element={<Documents/>}
         />
         <Route
+          path="/create"
+          element={<Create/>}
+        />
+        <Route
           path="/maintainence"
           element={<Maintainence/>}
         />
@@ -33,6 +39,8 @@ function App() {
           element={<Login/>}
         />
       </Routes>
+
+      <Footer/>
     </>
   )
 }
