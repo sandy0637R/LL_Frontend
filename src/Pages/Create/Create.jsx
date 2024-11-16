@@ -1,10 +1,10 @@
-import { redirect } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
 import MapComponent from "./Map";
 // import axios from "axios"; 
 function Create() {
   return (
     <div className="container p-5">
-      <form className="row g-3" method="post">
+      <Form className="row g-3" method="post">
         <div className="col-md-6">
           <label htmlFor="inputEmail4" className="form-label">
             Enter city
@@ -49,7 +49,7 @@ function Create() {
           Upload required documents
         </label>
     <input type="file" className="form-control" />
-        <div className="col-md-2">
+        <div className="col-md-2" name="file">
           <label htmlFor="inputZip" className="form-label">
             Zip
           </label>
@@ -77,7 +77,7 @@ function Create() {
             Save
           </button>
         </div>
-      </form>
+      </Form>
     </div>
   );
 }
