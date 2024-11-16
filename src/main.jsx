@@ -12,6 +12,9 @@ import Property from "./Pages/Property/Property";
 import Documents from "./Pages/Documents/Documents";
 import Maintainence from "./Pages/Maintainence/Maintainence";
 import Login from "./Pages/Login/Login";
+import Help from "./Pages/Help/Help.jsx";
+import Plans from "./Pages/Plans/Plans.jsx";
+import Services from "./Pages/Services/Services.jsx";
 import Create, { CreateAction } from "./Pages/Create/Create";
 
 const router = createBrowserRouter([
@@ -25,6 +28,9 @@ const router = createBrowserRouter([
       { path: "/property", element: <Property /> },
       { path: "/maintainence", element: <Maintainence /> },
       { path: "/login", element: <Login /> },
+      { path: "/help", element: <Help /> },
+      { path: "/plans", element: <Plans /> },
+      { path: "/services", element: <Services /> },
     ],
   },
 ]);

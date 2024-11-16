@@ -1,0 +1,166 @@
+.dashboard-body {
+  background-image: url("/public/pexels-pixabay-162539.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.main-container {
+  background-color: var(--primary);
+}
+
+.main-sec {
+  display: flex;
+}
+
+.main-sub-sec {
+  width: 50%;
+}
+
+.text-sec {
+  width: 90%;
+  border-radius: 50px;
+  background-color: var(--primary);
+  color: var(--dark_grey);
+  margin: 80px 100px 0px;
+  padding: 50px;
+}
+
+.dash-button {
+  padding: 10px 50px;
+  background-color: var(--white);
+  color: var(--dark_grey);
+  border: none;
+  font-size: 1.4em;
+  font-weight: 600;
+  border-radius: 80px;
+  margin: 10px 0px 0px 0px;
+}
+.dash-button:hover {
+  background-color: var(--dark_grey);
+  color: var(--white);
+  transition: all 0.8s ease;
+}
+
+.button-sec {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  border-radius: 50px;
+  color: var(--dark_grey);
+  margin: 30px 100px;
+}
+
+.button-sub-sec {
+  display: flex;
+}
+
+.dash-nav-button {
+  background-color: var(--primary-dark);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 120px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.dash-nav-button:hover {
+  background-color: var(--secondary);
+  color: var(--white);
+  transition: all 0.8s ease;
+}
+
+.dash-nav-text {
+  width: 70%;
+  margin-left: 20px;
+}
+
+.dash-icon {
+  font-size: 5em;
+  width: 30%;
+  margin-right: 10px;
+}
+
+.img-sec {
+  width: 35%;
+  margin: 30px 0px 50px 150px;
+}
+
+.dashboard-main-img {
+  width: 100%;
+  border-radius: 50px;
+}
+
+.property-types {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 50px 0px 0px 0px;
+}
+
+.pt-heading-sec {
+  margin-bottom: 20px;
+}
+
+.property-list {
+  display: flex;
+  gap: 40px;
+}
+
+.property-item {
+  cursor: pointer;
+  height: 200px;
+  width: 250px;
+  background-color: var(--primary-dark);
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.property-item:hover {
+  background-color: var(--secondary);
+  color: var(--white);
+  transition: all 0.8s ease;
+}
+
+.property-icon {
+  font-size: 5em;
+  margin-bottom: 10px;
+}
+
+.property-text {
+  font-size: 1.5em;
+}
+
+.property-definition {
+  width: 95%;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: var(--primary);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.property-definition button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: var(--dark_grey);
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.property-definition button:hover {
+  background-color: #444;
+}

@@ -17,6 +17,9 @@
   --green-dark: rgb(43, 101, 43);
   --shadow: rgba(0, 0, 0, 0.1);
   --border: #ccc;
+  --primary: rgba(251, 249, 249, 0.6);
+  --primary-dark: rgba(251, 249, 249, 0.7);
+  --secondary: rgba(7, 7, 7, 0.6);
 }
 
 .link {
