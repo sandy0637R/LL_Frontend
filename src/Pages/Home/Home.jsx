@@ -70,9 +70,9 @@ const Home = () => {
                     <i className="fa-solid fa-list dash-icon"></i>
                   </div>
                 </Link>
-                <Link className="link" style={{ color: "black" }} to="/others">
+                <Link className="link" style={{ color: "black" }} to="/create">
                   <div className="dash-nav-button">
-                    <h3 className="dash-nav-text">Others</h3>
+                    <h3 className="dash-nav-text">Add Property</h3>
                     <i className="fa-solid fa-magnifying-glass dash-icon"></i>
                   </div>
                 </Link>

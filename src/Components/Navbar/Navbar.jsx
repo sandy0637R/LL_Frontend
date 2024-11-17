@@ -63,7 +63,7 @@ const Navbar = () => {
                   location.pathname === "/create" ? "active-link" : ""
                 }`}
               >
-                <li className="nav-li">Create</li>
+                <li className="nav-li">Add Property</li>
               </Link>
               <Link
                 to="/documents"

@@ -9,7 +9,7 @@
   position: sticky;
   top: 0;
   box-shadow: 0px 1px 1px var(--white);
-  z-index: 10;
+  z-index: 2000;
 }
 
 .nav-logo {
