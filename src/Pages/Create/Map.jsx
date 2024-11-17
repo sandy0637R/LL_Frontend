@@ -151,7 +151,7 @@ const MapComponent = () => {
             />
           </div>
           <div className="col-6">
-            <label htmlFor="postcode" className="form-label">Postcode</label>
+            <label htmlFor="postcode" className="form-label"  >Postcode</label>
             <input
               type="text"
               id="postcode"

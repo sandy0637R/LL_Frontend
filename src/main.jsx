@@ -12,7 +12,7 @@ import Login from "./Pages/Login/Login";
 import Help from "./Pages/Help/Help.jsx";
 import Plans from "./Pages/Plans/Plans.jsx";
 import Services from "./Pages/Services/Services.jsx";
-import Create, { CreateAction } from "./Pages/Create/Create";
+import Create from "./Pages/Create/Create";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       { path: "/documents", element: <Documents /> },
-      { path: "/create", element: <Create />, action: CreateAction },
+      { path: "/create", element: <Create />},
       { path: "/property", element: <Property /> },
       { path: "/maintainence", element: <Maintainence /> },
       { path: "/login", element: <Login /> },

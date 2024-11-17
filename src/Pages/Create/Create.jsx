@@ -2,13 +2,13 @@ import { Form } from "react-router-dom";
 import { useState } from "react";
 import MapComponent from "./Map";
 
-export async function CreateAction(Data) {
-  const formData = await Data.request.formData();
-  const newrecord = Object.fromEntries(formData);
+// export async function CreateAction(Data) {
+//   const formData = await Data.request.formData();
+//   const newrecord = Object.fromEntries(formData);
 
-  console.log(newrecord);
-  return redirect("/");
-}
+//   console.log(newrecord);
+//   return redirect("/");
+// }
 
 function Create() {
   const [isLoan, setIsLoan] = useState(false);
@@ -232,14 +232,34 @@ function Create() {
 
         {/* File Upload */}
         <div className="col-md-12">
-          <label htmlFor="documents" className="form-label">
+          <label htmlFor="documents" className="form-label fs-5 text-center w-100">
             Upload Required Documents
           </label>
+          <label htmlFor="documents" className="form-label">
+          </label><br />
+          <label htmlFor="" >Property Papers &nbsp; &nbsp; <small className="text-danger ">(max size: 5MB)</small></label>
           <input
             type="file"
             className="form-control"
             id="documents"
-            name="documents"
+            name="propertyPaper"
+            required
+          /> <br />
+          <label htmlFor="" >Adhar Card  &nbsp; &nbsp; <small className="text-danger ">(max size: 500kb)</small></label>
+          <input
+            type="file"
+            className="form-control"
+            id="documents"
+            name="adharCard"
+            required
+          /> <br />
+          <label>Pan Card  &nbsp; &nbsp; <small className="text-danger ">(max size: 500kb)</small></label>
+          <input
+            type="file"
+            className="form-control"
+            id="documents"
+            name="panCard"
+            required
           />
         </div>
 
