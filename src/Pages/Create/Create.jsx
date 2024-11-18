@@ -1,6 +1,7 @@
 import { Form } from "react-router-dom";
 import { useState } from "react";
 import MapComponent from "./Map";
+import axios from "axios";
 
 // export async function CreateAction(Data) {
 //   const formData = await Data.request.formData();
@@ -16,12 +17,22 @@ function Create() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     const formData = new FormData(event.target);
-    const formObject = Object.fromEntries(formData.entries());
-
-    console.log("Form Data:", formObject);
+  
+    try {
+      const response = await axios.post('http://localhost:8080/records', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data', // Ensures proper handling of file uploads
+        },
+      });
+  
+      console.log('Response:', response.data);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
   };
+  
 
   return (
     <div className="container p-5">
@@ -242,7 +253,7 @@ function Create() {
             type="file"
             className="form-control"
             id="documents"
-            name="propertyPaper"
+            name="avatar"
             required
           /> <br />
           <label htmlFor="" >Adhar Card  &nbsp; &nbsp; <small className="text-danger ">(max size: 500kb)</small></label>
@@ -250,7 +261,7 @@ function Create() {
             type="file"
             className="form-control"
             id="documents"
-            name="adharCard"
+            name="avatar"
             required
           /> <br />
           <label>Pan Card  &nbsp; &nbsp; <small className="text-danger ">(max size: 500kb)</small></label>
@@ -258,7 +269,7 @@ function Create() {
             type="file"
             className="form-control"
             id="documents"
-            name="panCard"
+            name="avatar"
             required
           />
         </div>
