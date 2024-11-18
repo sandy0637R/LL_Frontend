@@ -15,6 +15,14 @@ const Navbar = () => {
           {isHomePage ? (
             <>
               <Link
+                to="/explore"
+                className={`link ${
+                  location.pathname === "/explore" ? "active-link" : ""
+                }`}
+              >
+                <li className="nav-li">Explore</li>
+              </Link>
+              <Link
                 to="/help"
                 className={`link ${
                   location.pathname === "/help" ? "active-link" : ""
