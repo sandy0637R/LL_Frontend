@@ -1,15 +1,6 @@
-import { Form } from "react-router-dom";
 import { useState } from "react";
 import MapComponent from "./Map";
 import axios from "axios";
-
-// export async function CreateAction(Data) {
-//   const formData = await Data.request.formData();
-//   const newrecord = Object.fromEntries(formData);
-
-//   console.log(newrecord);
-//   return redirect("/");
-// }
 
 function Create() {
   const [isLoan, setIsLoan] = useState(false);
@@ -17,22 +8,25 @@ function Create() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     const formData = new FormData(event.target);
-  
+
     try {
-      const response = await axios.post('http://localhost:8080/records', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // Ensures proper handling of file uploads
-        },
-      });
-  
-      console.log('Response:', response.data);
+      const response = await axios.post(
+        "http://localhost:8080/records",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data", // Ensures proper handling of file uploads
+          },
+        }
+      );
+
+      console.log("Response:", response.data);
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     }
   };
-  
 
   return (
     <div className="container p-5">
@@ -56,6 +50,7 @@ function Create() {
             id="propertyTitle"
             placeholder="Enter the Title"
             name="title"
+            required
           />
         </div>
 
@@ -69,6 +64,7 @@ function Create() {
             id="propertyType"
             name="propertyType"
             defaultValue=""
+            required
           >
             <option value="" disabled>
               Select Property Type
@@ -91,6 +87,7 @@ function Create() {
             id="ownerName"
             placeholder="Enter Owner Name"
             name="ownerName"
+            required
           />
         </div>
 
@@ -104,6 +101,7 @@ function Create() {
             className="form-control"
             id="purchaseDate"
             name="purchaseDate"
+            required
           />
         </div>
 
@@ -120,6 +118,7 @@ function Create() {
               id="loanYes"
               value="yes"
               onChange={() => setIsLoan(true)}
+              required
             />
             <label className="form-check-label" htmlFor="loanYes">
               Yes
@@ -133,6 +132,7 @@ function Create() {
               id="loanNo"
               value="no"
               onChange={() => setIsLoan(false)}
+              required
             />
             <label className="form-check-label" htmlFor="loanNo">
               No
@@ -152,10 +152,8 @@ function Create() {
                 id="totalPaid"
                 placeholder="Enter the Total Paid Amount"
                 name="totalPaid"
-                defaultValue={0}
-                onChange={(e) => {
-                  e.target.value = parseInt(e.target.value) || 0;
-                }}
+                required
+                min="0"
               />
             </div>
 
@@ -170,10 +168,8 @@ function Create() {
                 id="totalToBePaid"
                 placeholder="Enter the Total Amount"
                 name="totalToBePaid"
-                defaultValue={0}
-                onChange={(e) => {
-                  e.target.value = parseInt(e.target.value) || 0;
-                }}
+                required
+                min="0"
               />
             </div>
           </>
@@ -192,6 +188,7 @@ function Create() {
               id="nomineeYes"
               value="yes"
               onChange={() => setHasNominee(true)}
+              required
             />
             <label className="form-check-label" htmlFor="nomineeYes">
               Yes
@@ -205,6 +202,7 @@ function Create() {
               id="nomineeNo"
               value="no"
               onChange={() => setHasNominee(false)}
+              required
             />
             <label className="form-check-label" htmlFor="nomineeNo">
               No
@@ -225,6 +223,7 @@ function Create() {
                 id="nomineeName"
                 placeholder="Enter Nominee Name"
                 name="nomineeName"
+                required
               />
             </div>
             <div className="col-md-6">
@@ -236,6 +235,7 @@ function Create() {
                 className="form-control"
                 id="nomineeDOB"
                 name="nomineeDOB"
+                required
               />
             </div>
           </>
@@ -243,28 +243,39 @@ function Create() {
 
         {/* File Upload */}
         <div className="col-md-12">
-          <label htmlFor="documents" className="form-label fs-5 text-center w-100">
+          <label
+            htmlFor="documents"
+            className="form-label fs-5 text-center w-100"
+          >
             Upload Required Documents
           </label>
-          <label htmlFor="documents" className="form-label">
-          </label><br />
-          <label htmlFor="" >Property Papers &nbsp; &nbsp; <small className="text-danger ">(max size: 5MB)</small></label>
+          <label htmlFor="">
+            Property Papers{" "}
+            <small className="text-danger ">(max size: 5mb)</small>
+          </label>
           <input
             type="file"
             className="form-control"
             id="documents"
             name="avatar"
             required
-          /> <br />
-          <label htmlFor="" >Adhar Card  &nbsp; &nbsp; <small className="text-danger ">(max size: 500kb)</small></label>
+          />{" "}
+          <br />
+          <label htmlFor="">
+            Aadhar Card{" "}
+            <small className="text-danger ">(max size: 500kb)</small>
+          </label>
           <input
             type="file"
             className="form-control"
             id="documents"
             name="avatar"
             required
-          /> <br />
-          <label>Pan Card  &nbsp; &nbsp; <small className="text-danger ">(max size: 500kb)</small></label>
+          />{" "}
+          <br />
+          <label>
+            Pan Card <small className="text-danger ">(max size: 500kb)</small>
+          </label>
           <input
             type="file"
             className="form-control"
