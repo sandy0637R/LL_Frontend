@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRecordsRequest } from "../../ReduxStore/reducer";
 import Record from "../../Components/Record/Record";
+import Loader from "../Documents/Loader";
 
 const Property = () => {
   const dispatch = useDispatch();
@@ -11,8 +12,8 @@ const Property = () => {
     dispatch(fetchRecordsRequest());
   }, [dispatch]);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <Loader/>;
+  if (error) return <p className="text-center w-100 p-3">Error: {error}</p>;
 
   return (
     <div>
