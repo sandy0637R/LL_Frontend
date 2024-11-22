@@ -17,7 +17,7 @@ const Property = () => {
 
   return (
     <div>
-      {data.map((record, index) => (
+      {data.length===0?<p className="text-center p-3 fs-4">N0 data found</p>:data.map((record, index) => (
         <>
           <Record obj={record} key={index} />
         </>

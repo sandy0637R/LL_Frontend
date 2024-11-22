@@ -16,9 +16,9 @@ const Navbar = () => {
   }, []); // Dependency array ensures this runs only once
 
   const handleLogout = (e) => {
+    handleSuccess("User Logged Out");
     localStorage.removeItem("token");
     localStorage.removeItem("loggedInUser");
-    handleSuccess("User Logged Out");
     setTimeout(() => {
       navigate("/login");
     }, 1000);

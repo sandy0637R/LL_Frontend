@@ -1,6 +1,9 @@
 import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const RefreshHandler = ({ setIsAuthenticated, setIsCheckingAuth }) => {
+  const location=useLocation()
+  const navigate=useNavigate()
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -10,9 +13,9 @@ const RefreshHandler = ({ setIsAuthenticated, setIsCheckingAuth }) => {
       setIsAuthenticated(false);
     }
     setIsCheckingAuth(false); // Mark auth check as complete
-  }, [setIsAuthenticated, setIsCheckingAuth]);
+  }, [setIsAuthenticated, setIsCheckingAuth,location,navigate]);
 
-  return null; // No UI for this component
+  return null; 
 };
 
 export default RefreshHandler;
