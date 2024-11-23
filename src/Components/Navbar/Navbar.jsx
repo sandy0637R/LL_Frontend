@@ -26,7 +26,6 @@ const Navbar = () => {
 
   return (
     <div className="nav-main">
-      <small>Welcome, {loggedInUser || "User"}</small>
       <div className="nav-logo">Logo</div>
       <div className="navigators">
         <ul className="nav-ul">
@@ -63,6 +62,14 @@ const Navbar = () => {
                 }`}
               >
                 <li className="nav-li">Plans</li>
+              </Link>
+              <Link
+                to="/profile"
+                className={`link ${
+                  location.pathname === "/profile" ? "active-link" : ""
+                }`}
+              >
+                <li className="nav-li">Profile</li>
               </Link>
             </>
           ) : (

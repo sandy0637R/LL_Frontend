@@ -14,6 +14,7 @@ import Services from "./Pages/Services/Services";
 import Create from "./Pages/Create/Create";
 import Signup from "./Pages/Login/Signup";
 import RefreshHandler from "./Components/Refresh";
+import Profile from "./Pages/Profile/Profile";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -52,9 +53,11 @@ function App() {
           <Route path="/help" element={<PrivateRoute element={<Help />} />} />
           <Route path="/plans" element={<PrivateRoute element={<Plans />} />} />
           <Route path="/services" element={<PrivateRoute element={<Services />} />} />
+          <Route path="/profile" element={<PrivateRoute element={<Profile />} />} />
           {/* Public Routes */}
           <Route path="/login" element={<PublicRoute element={<Login />} />} />
           <Route path="/signup" element={<PublicRoute element={<Signup />} />} />
+          
         </Routes>
       )}
       <Footer />

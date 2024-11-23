@@ -94,7 +94,7 @@ const Record = ({ obj }) => {
                 </p>
                 <p>
                   <strong>Total Amount To Pay:</strong>{" "}
-                  {obj.totalAmountToPay || "Not provided"}
+                  {obj.totalToBePaid || "Not provided"}
                 </p>
                 {amountToPay !== null && (
                   <p>
