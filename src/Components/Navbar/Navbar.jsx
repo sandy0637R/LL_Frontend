@@ -1,16 +1,34 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
+import { handleSuccess } from "../../utils/Utils";
+import { ToastContainer } from "react-toastify";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
-  const isHomePage = location.pathname === "/";
+  const isHomePage = location.pathname === "/home";
+  const [loggedInUser, setLoggedInUser] = useState("");
+
+  useEffect(() => {
+    setLoggedInUser(localStorage.getItem("loggedInUser"));
+  }, []); // Dependency array ensures this runs only once
+
+  const handleLogout = (e) => {
+    handleSuccess("User Logged Out");
+    localStorage.removeItem("token");
+    localStorage.removeItem("loggedInUser");
+    setTimeout(() => {
+      navigate("/login");
+    }, 1000);
+  };
 
   return (
     <div className="nav-main">
+      <small>Welcome, {loggedInUser || "User"}</small>
       <div className="nav-logo">Logo</div>
-      <div className="navgators">
+      <div className="navigators">
         <ul className="nav-ul">
           {isHomePage ? (
             <>
@@ -50,9 +68,9 @@ const Navbar = () => {
           ) : (
             <>
               <Link
-                to="/"
+                to="/home"
                 className={`link ${
-                  location.pathname === "/" ? "active-link" : ""
+                  location.pathname === "/home" ? "active-link" : ""
                 }`}
               >
                 <li className="nav-li">Home</li>
@@ -87,20 +105,15 @@ const Navbar = () => {
                   location.pathname === "/maintainence" ? "active-link" : ""
                 }`}
               >
-                <li className="nav-li">Maintainence</li>
+                <li className="nav-li">Maintenance</li>
               </Link>
             </>
           )}
-
-          <Link
-            to="/login"
-            className={`link ${
-              location.pathname === "/login" ? "active-link" : ""
-            }`}
-          >
-            <li className="nav-li">Login</li>
-          </Link>
+          <button className="btn btn-primary" onClick={handleLogout}>
+            Logout
+          </button>
         </ul>
+        <ToastContainer />
       </div>
     </div>
   );

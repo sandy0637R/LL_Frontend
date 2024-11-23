@@ -1,32 +1,32 @@
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../../utils/Utils";
+import { ToastContainer } from "react-toastify";
 import axios from "axios";
 
-function Login() {
+function Signup() {
+  const nameref = useRef();
   const emailref = useRef();
   const passwordref = useRef();
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
+    const name = nameref.current.value;
     const email = emailref.current.value;
     const password = passwordref.current.value;
-    const loginInfo = { email, password };
+    const signupInfo = { name, email, password };
     try {
       const response = await axios.post(
-        "http://localhost:8080/auth/login",
-        loginInfo
+        "http://localhost:8080/auth/signup",
+        signupInfo
       );
-      const { success, message, jwtToken, name, error } = response.data;
+      const { success, message, error } = response.data;
 
       if (success) {
-        handleSuccess(message);
-        localStorage.setItem("token", jwtToken);
-        localStorage.setItem("loggedInUser", name);
+        handleSuccess(message); // Show success toast
         setTimeout(() => {
-          navigate("/home"); // Redirect after 1 second
+          navigate("/login"); // Redirect after 1 second
         }, 1000);
       } else if (error) {
         const details =
@@ -35,6 +35,7 @@ function Login() {
       } else if (!success) {
         handleError(message);
       }
+      nameref.current.value = "";
       emailref.current.value = "";
       passwordref.current.value = "";
     } catch (err) {
@@ -50,10 +51,22 @@ function Login() {
         style={{ maxWidth: "400px", width: "100%" }}
       >
         <div className="text-center mb-4">
-          <h1 className="fw-bold mb-0 fs-3">Login</h1>
-          <p className="text-muted">Access your account</p>
+          <h1 className="fw-bold mb-0 fs-3">Sign Up</h1>
+          <p className="text-muted">Create your account</p>
         </div>
-        <form onSubmit={handleLogin}>
+        <form onSubmit={handleSignup}>
+          {/* Name Field */}
+          <div className="form-floating mb-3">
+            <input
+              type="text"
+              className="form-control rounded-pill px-3"
+              id="name"
+              placeholder="Enter your name"
+              ref={nameref}
+              autoFocus
+            />
+            <label htmlFor="name">Enter your name</label>
+          </div>
           {/* Email Field */}
           <div className="form-floating mb-3">
             <input
@@ -62,7 +75,6 @@ function Login() {
               id="floatingInput"
               placeholder="name@example.com"
               ref={emailref}
-              autoFocus
             />
             <label htmlFor="floatingInput">Email address</label>
           </div>
@@ -77,19 +89,19 @@ function Login() {
             />
             <label htmlFor="floatingPassword">Password</label>
           </div>
-          {/* Login Button */}
+          {/* Signup Button */}
           <button
             className="w-100 btn btn-primary rounded-pill py-2 mb-3"
             type="submit"
           >
-            Login
+            Sign Up
           </button>
-          {/* Signup Link */}
+          {/* Login Link */}
           <div className="text-center">
             <small className="text-muted">
-              New user?{" "}
-              <Link to={"/signup"} className="text-decoration-none">
-                Sign up here
+              Already have an account?{" "}
+              <Link to={"/login"} className="text-decoration-none">
+                Login here
               </Link>
             </small>
           </div>
@@ -100,4 +112,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Signup;

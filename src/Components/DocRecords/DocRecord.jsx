@@ -93,11 +93,9 @@ const DocRecord = ({ obj }) => {
               <div className="modal-body">
                 {/* Display document content */}
                 <h6>{currentDoc.name}</h6>
+                {console.log(currentDoc.path)}
                 <img
-                  src={`http://localhost:8080/${currentDoc.path.replace(
-                    /\\/g,
-                    "/"
-                  )}`}
+                  src={`http://localhost:8080/${currentDoc.path}`}
                   alt={currentDoc.name}
                   className="img-fluid"
                 />

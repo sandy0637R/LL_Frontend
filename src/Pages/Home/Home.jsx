@@ -81,7 +81,7 @@ const Home = () => {
           </div>
           <div className="img-sec">
             <img
-              src="/public/Dashboard-main-img.gif"
+              src="/Dashboard-main-img.gif"
               alt=""
               className="dashboard-main-img"
             />
