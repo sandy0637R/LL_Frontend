@@ -21,7 +21,7 @@ const Documents = () => {
       <div className="document-main">
         <div className="document-sec">
           {data.length === 0 ? (
-            <p className="">N0 data found</p>
+            <p className="text-center p-3 w-100 ">N0 data found</p>
           ) : (
             data.map((record, index) => (
               <>

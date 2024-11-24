@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import "./Record.css";
+import axios from "axios";
+import { handleSuccess } from "../../utils/Utils";
+import { useNavigate } from "react-router-dom";
 
 const Record = ({ obj }) => {
+  const navigate = useNavigate();
   const [showDetails, setShowDetails] = useState(false);
 
   const hasLoanInfo = obj.loan || obj.totalPaid || obj.totalAmountToPay;
@@ -12,12 +16,34 @@ const Record = ({ obj }) => {
     obj.totalAmountToPay && obj.totalPaid
       ? obj.totalAmountToPay - obj.totalPaid
       : null;
-
+  const handleDelete = async (id) => {
+    try {
+      const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
+      await axios.delete(`http://localhost:8080/records/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+        },
+      });
+      handleSuccess("Record Deleted SucessFully");
+      navigate("/home");
+    } catch (error) {
+      console.error("Error deletiong record:", error);
+    }
+  };
   return (
     <div className="record-main">
       {/* First Card */}
       {!showDetails && (
         <div className="first-card">
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              handleDelete(obj._id);
+            }}
+          >
+            {" "}
+            Delete{" "}
+          </button>
           <div className="">
             <h5 className="record-title">{obj.title || "Not provided"}</h5>
 
@@ -122,7 +148,7 @@ const Record = ({ obj }) => {
             {/* Additional Information */}
             <p>
               <strong>Purchase Date:</strong>{" "}
-              {obj.purchasedate || "Not provided"}
+              {obj.purchaseDate || "Not provided"}
             </p>
             <p>
               <strong>Terms:</strong> {obj.terms || "Not provided"}

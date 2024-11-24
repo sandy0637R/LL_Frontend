@@ -20,7 +20,7 @@ const Property = () => {
       <div className="property-main">
         <div className="property-sec">
           {data.length === 0 ? (
-            <p className="">N0 data found</p>
+            <p className="text-center p-3 w-100">N0 data found</p>
           ) : (
             data.map((record, index) => (
               <>

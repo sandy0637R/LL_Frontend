@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./DocRecords.css";
-
 const DocRecord = ({ obj }) => {
   const [showModal, setShowModal] = useState(false);
   const [currentDoc, setCurrentDoc] = useState(null);
@@ -117,7 +116,10 @@ const DocRecord = ({ obj }) => {
                   className="img-fluid doc-view-img"
                 />
               </div>
-              <div className="modal-footer">
+              <div className="modal-footer d-flex justify-content-around">
+                <a href={`http://localhost:8080/${currentDoc.path}`} download>
+                  <button className="btn btn-success">Download</button>
+                </a>
                 <button
                   type="button"
                   className="doc-button"

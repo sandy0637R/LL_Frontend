@@ -9,30 +9,37 @@ function Create() {
   const [isLoan, setIsLoan] = useState(false);
   const [hasNominee, setHasNominee] = useState(false);
 const navigate=useNavigate()
-  const handleSubmit = async (event) => {
-event.preventDefault()
-    const formData = new FormData(event.target);
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  const formData = new FormData(event.target);
 
-    try {
-      const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
-    
-      const response = await axios.post(
-        "http://localhost:8080/records",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data", // Ensures proper handling of file uploads
-            Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
-          },
-        }
-      );
-    
-      console.log("Response:", response.data);
+  // Retrieve email from localStorage
+  const email = localStorage.getItem("email");
+  if (email) {
+    formData.append("email", email); // Add email to the form data
+  } else {
+    console.error("Email not found in localStorage");
+    return;
+  }
 
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }
-    handleSuccess('Record Created successfully')
+  try {
+    const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
+
+    const response = await axios.post(
+      "http://localhost:8080/records/",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data", // Ensures proper handling of file uploads
+          Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+        },
+      }
+    );
+
+    console.log("Response:", response.data);
+  } catch (error) {
+    console.error("Error submitting form:", error);
+  }    handleSuccess('Record Created successfully')
     setTimeout(()=>{
       navigate('/home')
 

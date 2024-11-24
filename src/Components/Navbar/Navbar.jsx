@@ -19,6 +19,7 @@ const Navbar = () => {
     handleSuccess("User Logged Out");
     localStorage.removeItem("token");
     localStorage.removeItem("loggedInUser");
+    localStorage.removeItem("email");
     setTimeout(() => {
       navigate("/login");
     }, 1000);
@@ -116,9 +117,11 @@ const Navbar = () => {
               </Link>
             </>
           )}
-          <button className="btn btn-primary" onClick={handleLogout}>
-            Logout
-          </button>
+          {localStorage.getItem("token") && (
+            <button className="btn btn-primary" onClick={handleLogout}>
+              Logout
+            </button>
+          )}
         </ul>
         <ToastContainer />
       </div>

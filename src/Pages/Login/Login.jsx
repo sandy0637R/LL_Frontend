@@ -19,12 +19,13 @@ function Login() {
         "http://localhost:8080/auth/login",
         loginInfo
       );
-      const { success, message, jwtToken, name, error } = response.data;
+      const { success, message, jwtToken, name,email, error } = response.data;
 
       if (success) {
         handleSuccess(message);
         localStorage.setItem("token", jwtToken);
         localStorage.setItem("loggedInUser", name);
+        localStorage.setItem("email",email);
         setTimeout(() => {
           navigate("/home"); // Redirect after 1 second
         }, 1000);
