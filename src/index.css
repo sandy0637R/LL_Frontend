@@ -16,10 +16,12 @@
   --background: #f7f7f7;
   --green-dark: rgb(43, 101, 43);
   --shadow: rgba(0, 0, 0, 0.1);
-  --border: #ccc;
+  --border: rgb(221, 201, 201);
   --primary: rgba(251, 249, 249, 0.6);
   --primary-dark: rgba(251, 249, 249, 0.7);
-  --secondary: rgba(7, 7, 7, 0.6);
+  --secondary: rgba(0, 114, 254, 0.5);
+  --blue-shade: rgb(0, 114, 254);
+  --blue-shade-dark: rgb(19, 104, 208);
 }
 
 .link {

@@ -1,0 +1,19 @@
+.document-background {
+  background-image: url("/pexels-pixabay-162539.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.document-main {
+  background-color: var(--primary);
+}
+
+.document-sec {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 50px;
+}

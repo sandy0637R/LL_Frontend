@@ -1,0 +1,95 @@
+.doc-card-background {
+  background-color: var(--primary-dark);
+  width: 450px;
+  height: fit-content;
+  display: flex;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 1.08em;
+  border: 1px solid var(--border);
+}
+
+.doc-q-text {
+  color: var(--blue-shade);
+  margin-right: 5px;
+}
+
+.doc-info {
+  font-size: 1.1em;
+  display: flex;
+}
+
+.doc-info-data {
+  font-weight: 600;
+}
+
+.doc-ul {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.doc-list {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  width: 410px;
+  align-items: center;
+}
+
+.doc-pp {
+  background-color: var(--primary-dark);
+  border-radius: 0px 0px 5px 5px;
+  border-right: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.doc-pc {
+  background-color: var(--primary-dark);
+  border: 1px solid var(--border);
+}
+
+.doc-ac {
+  background-color: var(--primary-dark);
+  border-radius: 5px 5px 0px 0px;
+  border-right: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+}
+
+.doc-button {
+  border: none;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background-color: var(--blue-shade);
+  color: var(--white);
+}
+
+.doc-button:hover {
+  background-color: var(--blue-shade-dark);
+}
+
+.doc-view-card {
+  background-color: rgba(255, 254, 254, 0.9);
+}
+
+.doc-view-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.doc-x-button {
+  font-size: 0.8em;
+  font-weight: bolder;
+  padding: 2px 7px;
+  border: none;
+  background-color: var(--red);
+  color: var(--white);
+  border-radius: 2px;
+}
+
+.doc-view-img {
+  border: solid 1px var(--dark_grey);
+}

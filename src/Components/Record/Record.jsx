@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Record.css";
 
 const Record = ({ obj }) => {
   const [showDetails, setShowDetails] = useState(false);
@@ -13,34 +14,34 @@ const Record = ({ obj }) => {
       : null;
 
   return (
-    <div className="container mt-5">
+    <div className="record-main">
       {/* First Card */}
       {!showDetails && (
-        <div className="card shadow-sm p-3 mb-4">
-          <div className="card-body">
-            <h5 className="card-title">{obj.title || "Not provided"}</h5>
+        <div className="first-card">
+          <div className="">
+            <h5 className="record-title">{obj.title || "Not provided"}</h5>
 
             {/* Property Type */}
-            <p className="card-text">
+            <p className="">
               <strong>Property Type:</strong>{" "}
               {obj.propertyType || "Not provided"}
             </p>
 
             {/* Owner Name */}
-            <p className="card-text">
+            <p className="">
               <strong>Owner Name:</strong> {obj.ownerName || "Not provided"}
             </p>
 
             {/* Loan Info */}
             {hasLoanInfo && (
-              <p className="card-text">
+              <p className="">
                 <strong>Loan:</strong> {obj.loan || "Not provided"}
               </p>
             )}
 
             {/* Button to view more details */}
             <button
-              className="btn btn-primary"
+              className="record-button"
               onClick={() => setShowDetails(true)}
             >
               View Details
@@ -51,9 +52,9 @@ const Record = ({ obj }) => {
 
       {/* Second Card */}
       {showDetails && (
-        <div className="card shadow-sm p-3">
-          <div className="card-body">
-            <h5 className="card-title">Property Details</h5>
+        <div className="">
+          <div className="">
+            <h5 className="record-title">Property Details</h5>
             <p>
               <strong>Property Name:</strong> {obj.title || "Not provided"}
             </p>
@@ -129,7 +130,7 @@ const Record = ({ obj }) => {
 
             {/* Back Button */}
             <button
-              className="btn btn-secondary"
+              className="record-button"
               onClick={() => setShowDetails(false)}
             >
               Back

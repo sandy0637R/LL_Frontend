@@ -6,11 +6,14 @@ const Home = () => {
   const [selectedProperty, setSelectedProperty] = useState(null);
 
   const propertyDefinitions = {
-    house: "A house is a standalone residential building designed for a single-family living.",
+    house:
+      "A house is a standalone residential building designed for a single-family living.",
     flat: "A flat, or apartment, is a self-contained housing unit that occupies part of a building.",
-    bungalow: "A bungalow is a single-story house, often with a spacious layout and large garden.",
+    bungalow:
+      "A bungalow is a single-story house, often with a spacious layout and large garden.",
     land: "Land refers to a plot of real estate property that can be used for construction or agriculture.",
-    shops: "Shops are commercial spaces used for retail businesses or services.",
+    shops:
+      "Shops are commercial spaces used for retail businesses or services.",
   };
 
   const propertyIcons = {
@@ -28,7 +31,7 @@ const Home = () => {
           <div className="main-sub-sec">
             <div className="text-sec">
               <p className="text-p">Property Management Software</p>
-              <h1 className="text-h1">Real estate runs on LandLord</h1>
+              <h1 className="text-h1">Real Estate runs on LandLord</h1>
               <h4 className="text-h4">
                 "We’re here to help you manage your property in a more
                 innovative way. Manage your properties with ease. When you say

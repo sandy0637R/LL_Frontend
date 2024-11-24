@@ -1,0 +1,27 @@
+.record-main {
+  background-color: var(--primary-dark);
+  width: 450px;
+  height: fit-content;
+  display: flex;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+.record-title {
+  font-size: 1.7em;
+  color: var(--blue-shade);
+}
+
+.record-button {
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--blue-shade);
+  color: var(--white);
+}
+
+.record-button:hover {
+  background-color: var(--blue-shade-dark);
+}

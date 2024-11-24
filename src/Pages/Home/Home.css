@@ -4,6 +4,8 @@
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  height: 100%;
+  width: 100%;
 }
 
 .main-container {
@@ -39,7 +41,7 @@
 }
 
 .dash-button:hover {
-  background-color: var(--dark_grey);
+  background-color: var(--blue-shade);
   color: var(--white);
   transition: all 0.8s ease;
 }

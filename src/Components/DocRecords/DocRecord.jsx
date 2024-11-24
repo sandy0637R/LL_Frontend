@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./DocRecords.css";
 
 const DocRecord = ({ obj }) => {
   const [showModal, setShowModal] = useState(false);
@@ -15,58 +16,72 @@ const DocRecord = ({ obj }) => {
   };
 
   return (
-    <div className="card mb-3">
+    <div className="doc-card-background">
       {/* First card */}
-      <div className="card-body">
-        <p className="card-text">
-          <strong>Property Name:</strong> {obj.title || "Not provided"}
+      <div className="doc-info-sec">
+        <p className="doc-info">
+          <strong className="doc-q-text">Property Name:</strong>{" "}
+          <p className="doc-info-data">{obj.title || "Not provided"}</p>
         </p>
-        <p className="card-text">
-          <strong>Owner Name:</strong> {obj.ownerName || "Not provided"}
+        <p className="doc-info">
+          <strong className="doc-q-text">Owner Name:</strong>{" "}
+          <p className="doc-info-data">{obj.ownerName || "Not provided"}</p>
         </p>
 
         {/* Documents Section */}
-        <h6>Documents:</h6>
-        <ul className="list-group">
+        <strong className="doc-q-text doc-info">Documents:</strong>
+        <div className="doc-ul">
           {/* Aadhar Card */}
           {obj.documents?.adharCard?.name && (
-            <li className="list-group-item">
-              <strong>Aadhar Card:</strong>
-              <button
-                className="btn btn-primary btn-sm ms-2"
-                onClick={() => handleViewClick(obj.documents.adharCard)}
-              >
-                View
-              </button>
+            <li className="doc-list doc-ac">
+              <div>
+                <strong>Aadhar Card:</strong>
+              </div>
+              <div>
+                <button
+                  className="doc-button"
+                  onClick={() => handleViewClick(obj.documents.adharCard)}
+                >
+                  View
+                </button>
+              </div>
             </li>
           )}
 
           {/* Pan Card */}
           {obj.documents?.panCard?.name && (
-            <li className="list-group-item">
-              <strong>Pan Card:</strong>
-              <button
-                className="btn btn-primary btn-sm ms-2"
-                onClick={() => handleViewClick(obj.documents.panCard)}
-              >
-                View
-              </button>
+            <li className="doc-list doc-pc">
+              <div>
+                <strong>Pan Card:</strong>
+              </div>
+              <div>
+                <button
+                  className="doc-button"
+                  onClick={() => handleViewClick(obj.documents.panCard)}
+                >
+                  View
+                </button>
+              </div>
             </li>
           )}
 
           {/* Property Paper */}
           {obj.documents?.propertyPaper?.name && (
-            <li className="list-group-item">
-              <strong>Property Paper:</strong>
-              <button
-                className="btn btn-primary btn-sm ms-2"
-                onClick={() => handleViewClick(obj.documents.propertyPaper)}
-              >
-                View
-              </button>
+            <li className="doc-list doc-pp">
+              <div>
+                <strong>Property Paper:</strong>
+              </div>
+              <div>
+                <button
+                  className="doc-button"
+                  onClick={() => handleViewClick(obj.documents.propertyPaper)}
+                >
+                  View
+                </button>
+              </div>
             </li>
           )}
-        </ul>
+        </div>
       </div>
 
       {/* Second card */}
@@ -78,16 +93,18 @@ const DocRecord = ({ obj }) => {
           style={{ display: "block", zIndex: 5000 }}
         >
           <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Document View</h5>
+            <div className="modal-content   doc-view-card">
+              <div className="modal-header doc-view-heading">
+                <h5 className="modal-title doc-q-text doc-info-data">
+                  Document View
+                </h5>
                 <button
                   type="button"
-                  className="close"
+                  className="doc-x-button"
                   onClick={handleCloseModal}
                   aria-label="Close"
                 >
-                  <span aria-hidden="true">&times;</span>
+                  <i class="fa-solid fa-x"></i>
                 </button>
               </div>
               <div className="modal-body">
@@ -97,13 +114,13 @@ const DocRecord = ({ obj }) => {
                 <img
                   src={`http://localhost:8080/${currentDoc.path}`}
                   alt={currentDoc.name}
-                  className="img-fluid"
+                  className="img-fluid doc-view-img"
                 />
               </div>
               <div className="modal-footer">
                 <button
                   type="button"
-                  className="btn btn-secondary"
+                  className="doc-button"
                   onClick={handleCloseModal}
                 >
                   Back
