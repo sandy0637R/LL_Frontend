@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "./Profile.css"
 
 const Profile = () => {
   const [loggedInUser, setLoggedInUser] = useState("");
@@ -18,13 +19,17 @@ const Profile = () => {
   };
 
   return (
-    <div className="profile-container">
-      <h2>Profile</h2>
+    <div className='profile-back-img'>
+      <div className="profile-container">
+      <div className='profile-body'>
+      <h2 className='profile-heading'>Profile</h2>
       <div className="profile-details">
-        <p><strong>User:</strong> {loggedInUser}</p>
-        <p><strong>Email:</strong> {loggedInEmail}</p>
+        <div className='profile-info-sec'><label className='profile-label'>User:</label> <p className='profile-info'>{loggedInUser}</p></div>
+        <div className='profile-info-sec'><label className='profile-label'>Email:</label><p className='profile-info'> {loggedInEmail}</p></div>
       </div>
-      <button className="btn btn-secondary" onClick={handleBackClick}>Back</button>
+      <button className="profile-back-btn" onClick={handleBackClick}>Back</button>
+      </div>
+    </div>
     </div>
   );
 };

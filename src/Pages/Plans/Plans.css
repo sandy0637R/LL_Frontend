@@ -1,0 +1,26 @@
+.plan-back-img {
+  background-image: url("/pexels-pixabay-162539.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.plan-background {
+  padding: 30px 100px 50px;
+  background-color: var(--primary);
+}
+
+.plan-main-heading {
+  margin-bottom: 35px;
+  font-weight: 600;
+  color: var(--blue-shade);
+}
+
+.plan-card-body {
+  background-color: var(--primary);
+}
+
+.plan-card-list {
+  background-color: var(--primary);
+}

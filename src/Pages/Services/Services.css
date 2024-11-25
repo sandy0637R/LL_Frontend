@@ -1,0 +1,23 @@
+.services-back-img {
+  background-image: url("/pexels-pixabay-162539.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+.services-main-background {
+  background-color: var(--primary);
+  padding: 30px 100px;
+}
+
+.services-main-title {
+  font-weight: 600;
+}
+.service-card {
+  background-color: var(--primary-dark);
+}
+
+.custom-service-title {
+  border-bottom: 1px solid var(--border);
+}

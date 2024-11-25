@@ -116,10 +116,7 @@ const DocRecord = ({ obj }) => {
                   className="img-fluid doc-view-img"
                 />
               </div>
-              <div className="modal-footer d-flex justify-content-around">
-                <a href={`http://localhost:8080/${currentDoc.path}`} download>
-                  <button className="btn btn-success">Download</button>
-                </a>
+              <div className="modal-footer d-flex ">
                 <button
                   type="button"
                   className="doc-button"
@@ -127,6 +124,9 @@ const DocRecord = ({ obj }) => {
                 >
                   Back
                 </button>
+                <a href={`http://localhost:8080/${currentDoc.path}`} download>
+                  <button className="doc-button"><i class="fa-solid fa-download"></i></button>
+                </a>
               </div>
             </div>
           </div>

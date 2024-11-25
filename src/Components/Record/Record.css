@@ -14,6 +14,32 @@
   color: var(--blue-shade);
 }
 
+.update-form-heading {
+  color: var(--blue-shade);
+  margin-bottom: 20px;
+}
+.form-input-sec {
+  display: flex;
+  margin-bottom: 15px;
+  align-items: center;
+}
+
+.prop-form-label {
+  width: 180px;
+  font-weight: 700;
+}
+
+.update-form-input {
+  padding: 3px;
+  border: none;
+  box-shadow: 0px 0px 2px var(--blue-shade-dark);
+  border-radius: 2px;
+}
+
+.update-form-input:focus {
+  outline: 2px solid var(--blue-shade);
+  background-color: rgb(244, 239, 239);
+}
 .record-button {
   padding: 10px 25px;
   border-radius: 5px;
@@ -22,6 +48,30 @@
   color: var(--white);
 }
 
+.record-delete-btn {
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--red);
+  color: var(--white);
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.update-check-label {
+  font-weight: 500;
+  color: var(--blue-shade);
+  margin-left: 5px;
+}
+
+.update-check-sec {
+  display: flex;
+  align-items: center;
+}
 .record-button:hover {
   background-color: var(--blue-shade-dark);
+}
+
+.rec-button-sec {
+  margin-top: 20px;
 }

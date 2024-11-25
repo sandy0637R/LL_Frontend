@@ -1,60 +1,74 @@
-.background {
-    background-color: #f7f7f7;
-    padding: 20px 0;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .help-body {
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-  }
-  
-  .card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    background-color: #ffffff;
-  }
-  
-  .card-header {
-    background-color: #007bff;
-    color: white;
-    padding: 15px;
-    font-size: 1.25rem;
-    border-radius: 8px 8px 0 0;
-  }
-  
-  .card-body {
-    padding: 20px;
-    font-size: 1rem;
-  }
-  
-  .card-body ul {
-    padding-left: 20px;
-  }
-  
-  .card-body ul li {
-    margin-bottom: 10px;
-  }
-  
-  .card-body ul li strong {
-    font-weight: bold;
-  }
-  
-  .card-background {
-    background-color: #f9f9f9;
-  }
-  
+.help-background-img {
+  background-image: url("/pexels-pixabay-162539.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+.help-background {
+  background-color: var(--primary);
+  padding: 20px 0;
+}
+
+.help-main-heading {
+  font-size: 2em;
+  font-weight: 600;
+  color: var(--blue-shade);
+  margin-bottom: 30px;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.help-body {
+  background-color: var(--primary);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px 20px 50px;
+  margin: 0px 30px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.help-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background-color: var(--primary);
+  margin: 10px 50px;
+}
+
+.help-card-header {
+  color: var(--blue-shade);
+  padding: 15px;
+  font-size: 1.25rem;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.help-card-body {
+  padding: 20px;
+  font-size: 1rem;
+}
+
+.help-card-body ul {
+  padding-left: 20px;
+}
+
+.help-card-body ul li {
+  margin-bottom: 10px;
+}
+
+.nelp-card-body ul li strong {
+  font-weight: bold;
+}
+
+.help-card-background {
+  background-color: #f9f9f9;
+}

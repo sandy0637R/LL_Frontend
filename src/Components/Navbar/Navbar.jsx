@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <div className="nav-main">
-      <div className="nav-logo">Logo</div>
+      <div className="nav-logo">LandLord</div>
       <div className="navigators">
         <ul className="nav-ul">
           {isHomePage ? (

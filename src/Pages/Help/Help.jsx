@@ -1,5 +1,5 @@
 import React from "react";
-import HelpCard from "./HelpCard"; 
+import HelpCard from "./HelpCard";
 import "./Help.css";
 
 const Help = () => {
@@ -108,16 +108,18 @@ const Help = () => {
   ];
 
   return (
-    <div className="background">
-      <div className="help-body">
-        <h2 className="mb-4">Help Section</h2>
-        {helpSections.map((section, index) => (
-          <HelpCard
-            key={index}
-            title={section.title}
-            content={section.content}
-          />
-        ))}
+    <div className="help-background-img">
+      <div className="help-background">
+        <div className="help-body">
+          <h2 className="help-main-heading">Help Section</h2>
+          {helpSections.map((section, index) => (
+            <HelpCard
+              key={index}
+              title={section.title}
+              content={section.content}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
