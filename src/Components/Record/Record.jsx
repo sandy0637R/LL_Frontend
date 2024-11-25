@@ -30,12 +30,13 @@ const Record = ({ obj }) => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
-      await axios.delete(`http://localhost:8080/records/${id}`, {
+      const response =await axios.delete(`http://localhost:8080/records/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
         },
       });
-      handleSuccess("Record Deleted Successfully");
+      const {message}=response.data
+      handleSuccess(message);
       navigate("/home");
     } catch (error) {
       console.error("Error deleting record:", error);
@@ -57,12 +58,13 @@ const Record = ({ obj }) => {
     }
     try {
       const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
-      await axios.patch(`http://localhost:8080/records/${id}`, formData, {
+      const respnse =await axios.patch(`http://localhost:8080/records/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
         },
       });
-      handleSuccess("Record modified Successfully");
+      const {message}=respnse.data
+      handleSuccess(message);
       navigate("/home"); // Go back to the previous page
     } catch (error) {
       console.error("Error modifying the record:", error);

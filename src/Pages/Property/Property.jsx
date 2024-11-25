@@ -25,10 +25,6 @@ const Property = () => {
             data.map((record, index) => (
               <>
                 <Record obj={record} key={index} />
-                <Record obj={record} key={index} />
-                <Record obj={record} key={index} />
-                <Record obj={record} key={index} />
-                <Record obj={record} key={index} />
               </>
             ))
           )}

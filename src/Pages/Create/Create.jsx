@@ -41,9 +41,9 @@ const handleSubmit = async (event) => {
     console.error("Error submitting form:", error);
   }    handleSuccess('Record Created successfully')
     setTimeout(()=>{
-      navigate('/home')
+      navigate('/property')
 
-    },1000)
+    },2000)
   };
 
   return (

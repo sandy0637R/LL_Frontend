@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import ExploreList from './expore-list/ExploreList';
 
 const Explore = () => {
   const [dummyData,setDummyData]=useState([])
@@ -20,24 +21,14 @@ const Explore = () => {
       }}
       useEffect(()=>fetchRecordsApi,[]);
 
-  return (
-
-
-    <div>
-      Explore
-      {dummyData.map((rec)=>{
-        return (<div className="container">
-         <p>{rec.address}</p>
-         <p>{rec.cityName}</p>
-         <p>{rec.latitude}</p>
-         <p>{rec.longitude}</p>
-         <p>{rec.postCode}</p>
-         <p>{rec.propertyName}</p>
-         <p>{rec.propertyType}</p>
-         <img src={rec.image} alt="image" width={400}/>
-        </div>)
-      })}
-    </div>
+  return (<>
+ <h1 className='text-center m-3'>Explore More </h1>
+      {
+        dummyData.map((rec,index)=>{
+          return <ExploreList rec={rec} key={index}/>
+        })
+      }
+      </>
   )
 }
 
