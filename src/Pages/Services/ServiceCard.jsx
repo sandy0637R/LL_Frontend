@@ -4,7 +4,7 @@ import "./Services.css";
 
 const ServiceCard = ({ title, items }) => {
   return (
-    <div className="card mb-3 service-card">
+    <div className="service-card">
       <div className="card-body custom-service-body">
         <h5 className="card-title text-primary custom-service-title">
           {title}

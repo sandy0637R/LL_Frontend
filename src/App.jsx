@@ -21,6 +21,7 @@ import Signup from "./Pages/Login/Signup";
 import RefreshHandler from "./Components/Refresh";
 import Profile from "./Pages/Profile/Profile";
 import { ToastContainer } from "react-toastify";
+import Sell from "./Pages/Sell/Sell";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -80,6 +81,10 @@ function App() {
           <Route
             path="/profile"
             element={<PrivateRoute element={<Profile />} />}
+          />
+          <Route
+            path="/sell"
+            element={<PrivateRoute element={<Sell />} />}
           />
           {/* Public Routes */}
           <Route path="/login" element={<PublicRoute element={<Login />} />} />

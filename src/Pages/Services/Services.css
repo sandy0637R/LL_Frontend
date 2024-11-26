@@ -16,6 +16,10 @@
 }
 .service-card {
   background-color: var(--primary-dark);
+  padding: 20px;
+  border: var(--border) solid 1px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 }
 
 .custom-service-title {
