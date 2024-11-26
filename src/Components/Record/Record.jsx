@@ -1,328 +1,403 @@
 import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { removeFromSell } from "../../ReduxStore/reducer";
-import { handleError, handleSuccess } from "../../utils/Utils"; // Make sure these functions are defined
+import "./Record.css";
+import axios from "axios";
+import { handleError, handleSuccess } from "../../utils/Utils";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToSell } from "../../ReduxStore/reducer"; 
 
-const Sell = () => {
+
+const Record = ({ obj }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isSure, setIsSure] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-  const [isUpdating, setIsUpdating] = useState(false); // Track update mode
+  const [isUpdating, setIsUpdating] = useState(false); 
   const [formData, setFormData] = useState({
-    title: "",
-    propertyType: "",
-    ownerName: "",
-    loan: "",
-    totalPaid: "",
-    totalToBePaid: "",
-    latitude: "",
-    longitude: "",
-    address: "",
-    city: "",
-    postcode: "",
-    nomineeName: "",
-    nomineeDOB: "",
-    purchaseDate: "",
-    terms: "",
+    title: obj.title || "",
+    propertyType: obj.propertyType || "",
+    ownerName: obj.ownerName || "",
+    loan: obj.loan || "",
+    totalPaid: obj.totalPaid || "",
+    totalToBePaid: obj.totalToBePaid || "",
+    latitude: obj.latitude || "",
+    longitude: obj.longitude || "",
+    address: obj.additionalAddress || "",
+    city: obj.city || "",
+    postcode: obj.postcode || "",
+    nomineeName: obj.nomineeName || "",
+    nomineeDOB: obj.nomineeDOB || "",
+    purchaseDate: obj.purchaseDate || "",
+    terms: obj.terms || "",
   });
 
-  // Retrieve sell[] from Redux
-  const sellRecords = useSelector((state) => state.records.sell);
-
-  const handleRemoveFromSell = (id) => {
-    dispatch(removeFromSell(id)); // Dispatch the remove action
-  };
-
-  const hasLoanInfo = (record) => record.loan || record.totalPaid || record.totalToBePaid;
-  const hasNomineeInfo = (record) => record.nomineeName || record.nomineeDOB;
-  const amountToPay = (record) => record.totalToBePaid && record.totalPaid
-    ? record.totalToBePaid - record.totalPaid
-    : null;
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleUpdate = (id) => {
-    if (isSure) {
-      // Here you'd send an API request to update the record with id and formData
-      axios
-        .put(`/api/records/${id}`, formData)
-        .then((response) => {
-          handleSuccess(response.data);
-          setIsUpdating(false);
-          setShowDetails(false);
-        })
-        .catch((error) => {
-          handleError(error);
-        });
+  const handleDelete = async (id) => {
+    try {
+      const token = localStorage.getItem("token"); 
+      const response =await axios.delete(`http://localhost:8080/records/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+        },
+      });
+      const {message}=response.data
+      handleSuccess(message);
+      navigate("/home");
+    } catch (error) {
+      console.error("Error deleting record:", error);
     }
   };
 
+  // Handle the form input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Update the record
+  const handleUpdate = async (id) => {
+    if (!isSure) {
+      // Ensure the checkbox is checked before proceeding
+      handleError("Please confirm !!!");
+      return; // Block update action
+    }
+    try {
+      const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
+      const respnse =await axios.patch(`http://localhost:8080/records/${id}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+        },
+      });
+      const {message}=respnse.data
+      handleSuccess(message);
+      navigate("/home"); // Go back to the previous page
+    } catch (error) {
+      console.error("Error modifying the record:", error);
+    }
+  };
+  const handleSell = (id) => {
+    dispatch(addToSell(id)); // Add the record to the sell array
+    handleSuccess("Record added to sell list!"); // Show success message
+  };
+  const hasLoanInfo = obj.loan || obj.totalPaid || obj.totalAmountToPay;
+  const hasNomineeInfo = obj.nomineeName || obj.nomineeDOB;
+  const amountToPay =
+    obj.totalAmountToPay && obj.totalPaid
+      ? obj.totalAmountToPay - obj.totalPaid
+      : null;
+
   return (
-    <div>
-      <h3>Sold Records</h3>
-      {sellRecords.length === 0 ? (
-        <p>No records have been sold yet.</p>
-      ) : (
-        <ul>
-          {sellRecords.map((record) => (
-            <div key={record._id} className="record-main">
-              {/* First Card */}
-              {!showDetails && !isUpdating && (
-                <div className="first-card">
-                  <div>
-                    <h5 className="record-title">{record.title || "Not provided"}</h5>
+    <div className="record-main">
+      {/* First Card */}
+      {!showDetails && !isUpdating && (
+        <div className="first-card">
+          <div className="">
+            <h5 className="record-title">{obj.title || "Not provided"}</h5>
 
-                    {/* Property Type */}
-                    <p>
-                      <strong>Property Type:</strong> {record.propertyType || "Not provided"}
-                    </p>
+            {/* Property Type */}
+            <p className="">
+              <strong>Property Type:</strong>{" "}
+              {obj.propertyType || "Not provided"}
+            </p>
 
-                    {/* Owner Name */}
-                    <p>
-                      <strong>Owner Name:</strong> {record.ownerName || "Not provided"}
-                    </p>
+            {/* Owner Name */}
+            <p className="">
+              <strong>Owner Name:</strong> {obj.ownerName || "Not provided"}
+            </p>
 
-                    {/* Loan Info */}
-                    {hasLoanInfo(record) && (
-                      <p>
-                        <strong>Loan:</strong> {record.loan || "Not provided"}
-                      </p>
-                    )}
+            {/* Loan Info */}
+            {hasLoanInfo && (
+              <p className="">
+                <strong>Loan:</strong> {obj.loan || "Not provided"}
+              </p>
+            )}
 
-                    <button
-                      className="record-button"
-                      onClick={() => setShowDetails(true)}
-                    >
-                      View Details
-                    </button>
+            <button
+              className="record-button"
+              onClick={() => setShowDetails(true)}
+            >
+              View Details
+            </button>
+            <button
+      className="record-sell-btn"
+      onClick={() => handleSell(obj._id)}
+      style={{ marginLeft: "10px" }}
+    >
+      Sell
+    </button>
 
-                    <button
-                      onClick={() => handleRemoveFromSell(record._id)}
-                      style={{ marginLeft: "10px" }}
-                    >
-                      Remove from Sell
-                    </button>
-                    <button
-                      className="record-sell-btn"
-                      onClick={() => handleSell(record._id)} // Implement handleSell method if needed
-                      style={{ marginLeft: "10px" }}
-                    >
-                      Sell
-                    </button>
-                  </div>
-                </div>
-              )}
+            <button
+              className="record-delete-btn"
+              onClick={() => {
+                handleDelete(obj._id);
+              }}
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      )}
 
-              {/* Second Card with Update */}
-              {showDetails && !isUpdating && (
-                <div className="details-card">
-                  <h5 className="record-title">Property Details</h5>
+      {/* Second Card with Update */}
+      {showDetails && !isUpdating && (
+        <div className="">
+          <div className="">
+            <h5 className="record-title">Property Details</h5>
 
+            {/* View Mode */}
+            <p>
+              <strong>Property Name:</strong> {obj.title || "Not provided"}
+            </p>
+            <p>
+              <strong>Property Type:</strong>{" "}
+              {obj.propertyType || "Not provided"}
+            </p>
+            <p>
+              <strong>Owner Name:</strong> {obj.ownerName || "Not provided"}
+            </p>
+            <p>
+              <strong>Post Code:</strong> {obj.postcode || "Not provided"}
+            </p>
+            <p>
+              <strong>Address:</strong>{" "}
+              {obj.additionalAddress || "Not provided"}
+            </p>
+            <p>
+              <strong>City:</strong> {obj.city || "Not provided"}
+            </p>
+
+            {/* Loan Info */}
+            {hasLoanInfo && (
+              <div>
+                <p>
+                  <strong>Loan:</strong> {obj.loan || "Not provided"}
+                </p>
+                <p>
+                  <strong>Total Paid:</strong> {obj.totalPaid || "Not provided"}
+                </p>
+                <p>
+                  <strong>Total Amount To Pay:</strong>{" "}
+                  {obj.totalToBePaid || "Not provided"}
+                </p>
+                {amountToPay !== null && (
                   <p>
-                    <strong>Property Name:</strong> {record.title || "Not provided"}
+                    <strong>Amount To Pay:</strong> {amountToPay}
                   </p>
-                  <p>
-                    <strong>Property Type:</strong> {record.propertyType || "Not provided"}
-                  </p>
-                  <p>
-                    <strong>Owner Name:</strong> {record.ownerName || "Not provided"}
-                  </p>
-                  <p>
-                    <strong>Post Code:</strong> {record.postcode || "Not provided"}
-                  </p>
-                  <p>
-                    <strong>Address:</strong> {record.additionalAddress || "Not provided"}
-                  </p>
-                  <p>
-                    <strong>City:</strong> {record.city || "Not provided"}
-                  </p>
+                )}
+              </div>
+            )}
 
-                  {/* Loan Info */}
-                  {hasLoanInfo(record) && (
-                    <div>
-                      <p>
-                        <strong>Loan:</strong> {record.loan || "Not provided"}
-                      </p>
-                      <p>
-                        <strong>Total Paid:</strong> {record.totalPaid || "Not provided"}
-                      </p>
-                      <p>
-                        <strong>Total Amount To Pay:</strong> {record.totalToBePaid || "Not provided"}
-                      </p>
-                      {amountToPay(record) !== null && (
-                        <p>
-                          <strong>Amount To Pay:</strong> {amountToPay(record)}
-                        </p>
-                      )}
-                    </div>
-                  )}
+            {/* Nominee Info */}
+            {hasNomineeInfo && (
+              <div>
+                <p>
+                  <strong>Nominee Name:</strong>{" "}
+                  {obj.nomineeName || "Not provided"}
+                </p>
+                <p>
+                  <strong>Nominee Date of Birth:</strong>{" "}
+                  {obj.nomineeDOB || "Not provided"}
+                </p>
+              </div>
+            )}
 
-                  {/* Nominee Info */}
-                  {hasNomineeInfo(record) && (
-                    <div>
-                      <p>
-                        <strong>Nominee Name:</strong> {record.nomineeName || "Not provided"}
-                      </p>
-                      <p>
-                        <strong>Nominee Date of Birth:</strong> {record.nomineeDOB || "Not provided"}
-                      </p>
-                    </div>
-                  )}
+            {/* Additional Info */}
+            <p>
+              <strong>Purchase Date:</strong>{" "}
+              {obj.purchaseDate || "Not provided"}
+            </p>
 
-                  {/* Additional Info */}
-                  <p>
-                    <strong>Purchase Date:</strong> {record.purchaseDate || "Not provided"}
-                  </p>
+            {/* Update Button */}
+            <button
+              className="record-button"
+              onClick={() => setIsUpdating(true)} // Switch to update mode
+              style={{ marginRight: "20px" }}
+            >
+              Update
+            </button>
 
-                  {/* Update Button */}
-                  <button
-                    className="record-button"
-                    onClick={() => setIsUpdating(true)} // Switch to update mode
-                    style={{ marginRight: "20px" }}
-                  >
-                    Update
-                  </button>
+            {/* Back Button */}
+            <button
+              className="record-button"
+              onClick={() => setShowDetails(false)}
+            >
+              Back
+            </button>
+          </div>
+        </div>
+      )}
 
-                  {/* Back Button */}
-                  <button
-                    className="record-button"
-                    onClick={() => setShowDetails(false)}
-                  >
-                    Back
-                  </button>
-                </div>
-              )}
-
-              {/* Update Form Mode */}
-              {isUpdating && (
-                <div className="update-form">
-                  <h5 className="update-form-heading">Update Property Details</h5>
-                  <form>
-                    {/* Update Form Fields */}
-                    <div className="form-input-sec">
-                      <label className="prop-form-label">Property Name:</label>
-                      <input
-                        type="text"
-                        name="title"
-                        value={formData.title}
-                        onChange={handleChange}
-                        className="update-form-input"
-                      />
-                    </div>
-
-                    <div className="form-input-sec">
-                      <label className="prop-form-label">Property Type:</label>
-                      <input
-                        type="text"
-                        name="propertyType"
-                        value={formData.propertyType}
-                        onChange={handleChange}
-                        className="update-form-input"
-                      />
-                    </div>
-
-                    <div className="form-input-sec">
-                      <label className="prop-form-label">Post Code:</label>
-                      <input
-                        type="number"
-                        name="postcode"
-                        value={formData.postcode}
-                        onChange={handleChange}
-                        className="update-form-input"
-                      />
-                    </div>
-
-                    <div className="form-input-sec">
-                      <label className="prop-form-label">City:</label>
-                      <input
-                        type="text"
-                        name="city"
-                        value={formData.city}
-                        onChange={handleChange}
-                        className="update-form-input"
-                      />
-                    </div>
-
-                    <div className="form-input-sec">
-                      <label className="prop-form-label">Address:</label>
-                      <input
-                        type="text"
-                        name="address"
-                        value={formData.address}
-                        onChange={handleChange}
-                        className="update-form-input"
-                      />
-                    </div>
-
-                    <div className="form-input-sec">
-                      <label className="prop-form-label">Owner Name:</label>
-                      <input
-                        type="text"
-                        name="ownerName"
-                        value={formData.ownerName}
-                        onChange={handleChange}
-                        className="update-form-input"
-                      />
-                    </div>
-
-                    <div className="form-input-sec">
-                      <label className="prop-form-label">Purchase Date:</label>
-                      <input
-                        type="text"
-                        name="purchaseDate"
-                        value={formData.purchaseDate}
-                        onChange={handleChange}
-                        className="update-form-input"
-                      />
-                    </div>
-
-                    <div className="form-input-sec">
-                      <label className="prop-form-label">Nominee Name:</label>
-                      <input
-                        type="text"
-                        name="nomineeName"
-                        value={formData.nomineeName}
-                        onChange={handleChange}
-                        className="update-form-input"
-                      />
-                    </div>
-
-                    <div className="form-input-sec">
-                      <label className="prop-form-label">Nominee Date of Birth:</label>
-                      <input
-                        type="date"
-                        name="nomineeDOB"
-                        value={formData.nomineeDOB}
-                        onChange={handleChange}
-                        className="update-form-input"
-                      />
-                    </div>
-
-                    {/* Submit Update */}
-                    <button
-                      type="button"
-                      onClick={() => handleUpdate(record._id)} // Call the update function with id
-                      style={{ marginTop: "10px" }}
-                    >
-                      Update Property
-                    </button>
-                  </form>
-                </div>
-              )}
+      {/* Update Form Mode */}
+      {isUpdating && (
+        <div className="update-form">
+          <h5 className="update-form-heading">Update Property Details</h5>
+          <form>
+            {/* Update Form Fields */}
+            <div className="form-input-sec">
+              <label className="prop-form-label">Property Name:</label>
+              <input
+                type="text"
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                className="update-form-input"
+              />
             </div>
-          ))}
-        </ul>
+
+            <div className="form-input-sec">
+              <label className="prop-form-label">Property Type:</label>
+              <input
+                type="text"
+                name="propertyType"
+                value={formData.propertyType}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+            <div className="form-input-sec">
+              <label className="prop-form-label">Post Code:</label>
+              <input
+                type="number"
+                name="postcode"
+                value={formData.postcode}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+
+            <div className="form-input-sec">
+              <label className="prop-form-label">City:</label>
+              <input
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+
+            <div className="form-input-sec">
+              <label className="prop-form-label">Address:</label>
+              <input
+                type="text"
+                name="address"
+                value={formData.additionalAddress}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+
+            <div className="form-input-sec">
+              <label className="prop-form-label">Owner Name:</label>
+              <input
+                type="text"
+                name="ownerName"
+                value={formData.ownerName}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+
+            <div className="form-input-sec">
+              <label className="prop-form-label">Purchase Date:</label>
+              <input
+                type="text"
+                name="purchaseDate"
+                value={formData.purchaseDate}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+
+            <div className="form-input-sec">
+              <label className="prop-form-label">Nominee Name:</label>
+              <input
+                type="text"
+                name="nomineeName"
+                value={formData.nomineeName}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+
+            <div className="form-input-sec">
+              <label className="prop-form-label">Nominee DOB:</label>
+              <input
+                type="text"
+                name="nomineeDOB"
+                value={formData.nomineeDOB}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+
+            <div className="form-input-sec">
+              <label className="prop-form-label">Loan:</label>
+              <input
+                type="text"
+                name="loan"
+                value={formData.loan}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+
+            <div className="form-input-sec">
+              <label className="prop-form-label">Total Paid:</label>
+              <input
+                type="number"
+                name="totalPaid"
+                value={formData.totalPaid}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+
+            <div className="form-input-sec">
+              <label className="prop-form-label">Total Amount To Pay:</label>
+              <input
+                type="number"
+                name="totalToBePaid"
+                value={formData.totalToBePaid}
+                onChange={handleChange}
+                className="update-form-input"
+              />
+            </div>
+
+            {/* Add other fields similarly */}
+            <div className="update-check-sec">
+              <input
+                type="checkbox"
+                checked={isSure}
+                onChange={(e) => setIsSure(e.target.checked)}
+              />
+              <label className="update-check-label">
+                {" "}
+                Are you sure you want to update this record?
+              </label>
+            </div>
+
+            <div className="rec-button-sec">
+              <button
+                type="button"
+                className="record-button"
+                onClick={() => handleUpdate(obj._id)}
+                style={{ marginRight: "20px" }}
+              >
+                Update
+              </button>
+
+              <button
+                className="record-button"
+                onClick={() => setIsUpdating(false)} // Exit update mode
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
       )}
     </div>
   );
 };
 
-export default Sell;
+export default Record;
