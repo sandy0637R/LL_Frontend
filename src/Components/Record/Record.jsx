@@ -4,15 +4,14 @@ import axios from "axios";
 import { handleError, handleSuccess } from "../../utils/Utils";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addToSell } from "../../ReduxStore/reducer"; 
-
+import { addToSell } from "../../ReduxStore/reducer";
 
 const Record = ({ obj }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isSure, setIsSure] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
-  const [isUpdating, setIsUpdating] = useState(false); 
+  const [isUpdating, setIsUpdating] = useState(false);
   const [formData, setFormData] = useState({
     title: obj.title || "",
     propertyType: obj.propertyType || "",
@@ -33,13 +32,16 @@ const Record = ({ obj }) => {
 
   const handleDelete = async (id) => {
     try {
-      const token = localStorage.getItem("token"); 
-      const response =await axios.delete(`http://localhost:8080/records/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`, 
-        },
-      });
-      const {message}=response.data
+      const token = localStorage.getItem("token");
+      const response = await axios.delete(
+        `http://localhost:8080/records/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const { message } = response.data;
       handleSuccess(message);
       navigate("/home");
     } catch (error) {
@@ -62,12 +64,16 @@ const Record = ({ obj }) => {
     }
     try {
       const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
-      const respnse =await axios.patch(`http://localhost:8080/records/${id}`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
-        },
-      });
-      const {message}=respnse.data
+      const respnse = await axios.patch(
+        `http://localhost:8080/records/${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+          },
+        }
+      );
+      const { message } = respnse.data;
       handleSuccess(message);
       navigate("/home"); // Go back to the previous page
     } catch (error) {
@@ -118,12 +124,12 @@ const Record = ({ obj }) => {
               View Details
             </button>
             <button
-      className="record-sell-btn"
-      onClick={() => handleSell(obj._id)}
-      style={{ marginLeft: "10px" }}
-    >
-      Sell
-    </button>
+              className="record-button"
+              onClick={() => handleSell(obj._id)}
+              style={{ marginLeft: "10px" }}
+            >
+              Sell
+            </button>
 
             <button
               className="record-delete-btn"

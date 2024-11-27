@@ -1,5 +1,5 @@
 .document-background {
-  background-image: url("/pexels-pixabay-162539.jpg");
+  background-image: url("/public/assets/pexels-pixabay-162539.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -9,11 +9,15 @@
 .document-main {
   background-color: var(--primary);
 }
+.doc-heading {
+  color: var(--blue-shade);
+  padding-top: 50px;
+  margin-bottom: 0px;
+}
 
 .document-sec {
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
-  overflow-y: auto;
+
   padding: 50px;
 }

@@ -19,6 +19,9 @@ const Documents = () => {
   return (
     <div className="document-background">
       <div className="document-main">
+        <center>
+          <h1 className="doc-heading">Documents</h1>
+        </center>
         <div className="document-sec">
           {data.length === 0 ? (
             <p className="text-center p-3 w-100 ">N0 data found</p>

@@ -1,60 +1,74 @@
-.record-main {
-    background-color: var(--primary-dark);
-    width: 450px;
-    height: fit-content;
-    display: flex;
-    margin: 10px;
-    padding: 20px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-  }
-  
-  .record-title {
-    font-size: 1.7em;
-    color: var(--blue-shade);
-  }
-  
-  .record-button {
-    padding: 10px 25px;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--blue-shade);
-    color: var(--white);
-  }
-  
-  .record-delete-btn {
-    padding: 10px 25px;
-    border-radius: 5px;
-    border: none;
-    background-color: var(--red);
-    color: var(--white);
-    font-weight: 500;
-    margin-left: 10px;
-  }
-  
-  .update-check-label {
-    font-weight: 500;
-    color: var(--blue-shade);
-    margin-left: 5px;
-  }
-  
-  .update-check-sec {
-    display: flex;
-    align-items: center;
-  }
-  .record-button:hover {
-    background-color: var(--blue-shade-dark);
-  }
-  
-  .rec-button-sec {
-    margin-top: 20px;
-  }
-  .sell-main{
-    background-color: var(--primary);
-    margin: 0px 20px;
-    height: 100vh;
-    padding: 30px 0px;
-    overflow-y: auto;
-    display: flex;
-    flex-wrap: wrap;
-  }
+.sell-main {
+  background-color: var(--primary-dark);
+  display: flex;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  width: 100%;
+}
+
+.record-card {
+  position: relative;
+  margin-bottom: 20px;
+  background-color: var(--primary-dark);
+  border: var(--border) 1px solid;
+  width: 450px;
+  padding: 40px;
+  border-radius: 10px;
+  margin: 20px 10px;
+}
+.record-title {
+  font-size: 1.7em;
+  color: var(--blue-shade);
+}
+
+.sell-card-contain {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.record-button {
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--blue-shade);
+  color: var(--white);
+}
+
+.record-delete-btn {
+  padding: 10px 25px;
+  border-radius: 5px;
+  border: none;
+  background-color: var(--red);
+  color: var(--white);
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.update-check-label {
+  font-weight: 500;
+  color: var(--blue-shade);
+  margin-left: 5px;
+}
+
+.update-check-sec {
+  display: flex;
+  align-items: center;
+}
+.record-button:hover {
+  background-color: var(--blue-shade-dark);
+}
+
+.rec-button-sec {
+  margin-top: 20px;
+}
+.sell-main {
+  background-color: var(--primary);
+  margin: 0px 20px;
+  height: 100vh;
+  padding: 30px 0px;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+}

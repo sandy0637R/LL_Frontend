@@ -18,6 +18,10 @@ const Property = () => {
   return (
     <div className="property-background">
       <div className="property-main">
+        <center>
+          {" "}
+          <h1 className="prop-heading">Properties</h1>
+        </center>
         <div className="property-sec">
           {data.length === 0 ? (
             <p className="text-center p-3 w-100">N0 data found</p>

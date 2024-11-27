@@ -82,10 +82,7 @@ function App() {
             path="/profile"
             element={<PrivateRoute element={<Profile />} />}
           />
-          <Route
-            path="/sell"
-            element={<PrivateRoute element={<Sell />} />}
-          />
+          <Route path="/sell" element={<PrivateRoute element={<Sell />} />} />
           {/* Public Routes */}
           <Route path="/login" element={<PublicRoute element={<Login />} />} />
           <Route

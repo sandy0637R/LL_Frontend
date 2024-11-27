@@ -27,27 +27,13 @@ const Navbar = () => {
 
   return (
     <div className="nav-main">
-      <div className="nav-logo">LandLord</div>
+      <Link to="/home" className={"link"}>
+        <div className="nav-logo">LandLord</div>
+      </Link>
       <div className="navigators">
         <ul className="nav-ul">
           {isHomePage ? (
             <>
-              <Link
-                to="/explore"
-                className={`link ${
-                  location.pathname === "/explore" ? "active-link" : ""
-                }`}
-              >
-                <li className="nav-li">Explore</li>
-              </Link>
-              <Link
-                to="/sell"
-                className={`link ${
-                  location.pathname === "/sell" ? "active-link" : ""
-                }`}
-              >
-                <li className="nav-li">Sell</li>
-              </Link>
               <Link
                 to="/help"
                 className={`link ${
@@ -84,14 +70,6 @@ const Navbar = () => {
           ) : (
             <>
               <Link
-                to="/home"
-                className={`link ${
-                  location.pathname === "/home" ? "active-link" : ""
-                }`}
-              >
-                <li className="nav-li">Home</li>
-              </Link>
-              <Link
                 to="/property"
                 className={`link ${
                   location.pathname === "/property" ? "active-link" : ""
@@ -116,6 +94,14 @@ const Navbar = () => {
                 <li className="nav-li">Documents</li>
               </Link>
               <Link
+                to="/sell"
+                className={`link ${
+                  location.pathname === "/sell" ? "active-link" : ""
+                }`}
+              >
+                <li className="nav-li">Sell</li>
+              </Link>
+              <Link
                 to="/maintainence"
                 className={`link ${
                   location.pathname === "/maintainence" ? "active-link" : ""
@@ -126,7 +112,11 @@ const Navbar = () => {
             </>
           )}
           {localStorage.getItem("token") && (
-            <button className="btn btn-primary" onClick={handleLogout}>
+            <button
+              className="btn btn-primary"
+              onClick={handleLogout}
+              style={{ marginLeft: "10px" }}
+            >
               Logout
             </button>
           )}

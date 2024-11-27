@@ -1,16 +1,16 @@
 .sell-background-img {
-  background-image: url("/pexels-pixabay-162539.jpg");
+  background-image: url("/public/assets/pexels-pixabay-162539.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
 }
-.sell-main-body{
+.sell-main-body {
   background-color: var(--primary);
   padding: 50px 0px;
 }
 
-.sell-heading{
+.sell-heading {
   font-size: 2em;
   color: var(--blue-shade);
   font-weight: 600;

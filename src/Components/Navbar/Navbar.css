@@ -1,6 +1,6 @@
 .nav-main {
   display: flex;
-  background-color: var(--dark_grey);
+  background-color: var(--navbar);
   color: var(--white);
   padding: 10px;
   justify-content: center;
@@ -17,6 +17,10 @@
   font-weight: 700;
 }
 
+.nav-logo:hover {
+  color: yellow;
+}
+
 .nav-ul {
   display: flex;
   margin-right: 20px;
@@ -26,14 +30,16 @@
 .nav-li {
   padding: 8px 15px;
   margin: 0px 2px;
+  font-weight: 500;
 }
 
 .nav-li:hover {
-  background-color: black;
+  background-color: var(--blue-shade);
+  border-radius: 5px;
   color: yellow;
 }
 
 .active-link {
   color: yellow;
-  background-color: black;
+  background-color: var(--blue-shade);
 }
