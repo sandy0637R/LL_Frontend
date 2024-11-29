@@ -48,7 +48,7 @@ const Home = () => {
           </div>
           <div className="main-img-sec">
             <img
-              src="/public/assets/Dashboard-main-img.gif"
+              src="/assets/Dashboard-main-img.gif"
               alt=""
               className="home-main-img"
             />
