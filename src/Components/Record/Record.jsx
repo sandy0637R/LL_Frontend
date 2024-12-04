@@ -33,14 +33,11 @@ const Record = ({ obj }) => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.delete(
-        `http://localhost:8080/records/${id}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      const response = await axios.delete(`https://land-lord.onrender.com/records/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const { message } = response.data;
       handleSuccess(message);
       navigate("/home");
@@ -64,15 +61,11 @@ const Record = ({ obj }) => {
     }
     try {
       const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
-      const respnse = await axios.patch(
-        `http://localhost:8080/records/${id}`,
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
-          },
-        }
-      );
+      const respnse = await axios.patch(`https://land-lord.onrender.com/records/${id}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+        },
+      });
       const { message } = respnse.data;
       handleSuccess(message);
       navigate("/home"); // Go back to the previous page

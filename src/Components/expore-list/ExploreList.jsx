@@ -22,11 +22,14 @@ const ExploreList = ({ rec}) => {
             </p>
           </div>
           <a 
-          href={`mailto:sandy0637R@gamil.com?subject=Inquiry about ${rec.propertyName}&body=I am interested in this property.`} 
-          className="property-contact"
-        >
-          <button className="explore-buy-btn">Buy</button>
-        </a>
+  href={`mailto:${'rautsandesh0637@gmail.com    '.trim()}?subject=${encodeURIComponent(
+    `Inquiry about ${rec.propertyName.trim()}`
+  )}&body=${encodeURIComponent('I am interested in this property.'.trim())}`} 
+  className="property-contact"
+>
+  <button className="explore-buy-btn">Buy</button>
+</a>
+
         </div>
   
       );

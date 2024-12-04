@@ -15,17 +15,14 @@ function Login() {
     const password = passwordref.current.value;
     const loginInfo = { email, password };
     try {
-      const response = await axios.post(
-        "http://localhost:8080/auth/login",
-        loginInfo
-      );
-      const { success, message, jwtToken, name,email, error } = response.data;
+      const response = await axios.post("https://land-lord.onrender.com/auth/login", loginInfo);
+      const { success, message, jwtToken, name, email, error } = response.data;
 
       if (success) {
         handleSuccess(message);
         localStorage.setItem("token", jwtToken);
         localStorage.setItem("loggedInUser", name);
-        localStorage.setItem("email",email);
+        localStorage.setItem("email", email);
         setTimeout(() => {
           navigate("/home"); // Redirect after 1 second
         }, 1000);

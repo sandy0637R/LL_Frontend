@@ -56,10 +56,9 @@ const Footer = () => {
           <div className="footer-col">
             <h5>Trust & Security</h5>
             <div>
-              <img src="ssl-seal.png" alt="SSL Seal" className="footer-cert" />
-              <img src="bbb-logo.png" alt="BBB" className="footer-cert" />
+              <img src="/assets/ssl.jpg" alt="SSL Seal" className="footer-cert" />
               <img
-                src="iso-certification.png"
+                src="/assets/iso.jpg"
                 alt="ISO Certification"
                 className="footer-cert"
               />
@@ -124,8 +123,7 @@ const Footer = () => {
       {/* Copyright and Credits Section */}
       <div className="footer-section footer-bottom">
         <p>
-          © 2024 [Your Company Name]. All Rights Reserved. Powered by [Your
-          Company].
+          © 2024 Land-Lord. All Rights Reserved 
         </p>
       </div>
     </>

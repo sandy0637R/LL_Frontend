@@ -109,12 +109,12 @@ const DocRecord = ({ obj }) => {
               <div className="modal-body">
                 {/* Display document content */}
                 <h6>{currentDoc.name}</h6>
-                {console.log(currentDoc.path)}
                 <img
-                  src={`http://localhost:8080/${currentDoc.path}`}
+                  src={`https://land-lord.onrender.com/${currentDoc.path}`}
                   alt={currentDoc.name}
                   className="img-fluid doc-view-img"
                 />
+                {console.log("currentDoc", currentDoc)}
               </div>
               <div className="modal-footer d-flex ">
                 <button
@@ -124,7 +124,7 @@ const DocRecord = ({ obj }) => {
                 >
                   Back
                 </button>
-                <a href={`http://localhost:8080/${currentDoc.path}`} download>
+                <a href={`https://land-lord.onrender.com/${currentDoc.path}`} download>
                   <button className="doc-button"><i class="fa-solid fa-download"></i></button>
                 </a>
               </div>
