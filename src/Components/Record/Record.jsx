@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import "./Record.css";
 import axios from "axios";
 import { handleError, handleSuccess } from "../../utils/Utils";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { addToSell } from "../../ReduxStore/reducer";
+import { useNavigate , Link} from "react-router-dom";
 
 const Record = ({ obj }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isSure, setIsSure] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
@@ -33,11 +30,14 @@ const Record = ({ obj }) => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.delete(`https://land-lord.onrender.com/records/${id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.delete(
+        `https://land-lord.onrender.com/records/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       const { message } = response.data;
       handleSuccess(message);
       navigate("/home");
@@ -61,11 +61,15 @@ const Record = ({ obj }) => {
     }
     try {
       const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
-      const respnse = await axios.patch(`https://land-lord.onrender.com/records/${id}`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
-        },
-      });
+      const respnse = await axios.patch(
+        `https://land-lord.onrender.com/records/${id}`,
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
+          },
+        }
+      );
       const { message } = respnse.data;
       handleSuccess(message);
       navigate("/home"); // Go back to the previous page
@@ -73,10 +77,7 @@ const Record = ({ obj }) => {
       console.error("Error modifying the record:", error);
     }
   };
-  const handleSell = (id) => {
-    dispatch(addToSell(id)); // Add the record to the sell array
-    handleSuccess("Record added to sell list!"); // Show success message
-  };
+
   const hasLoanInfo = obj.loan || obj.totalPaid || obj.totalAmountToPay;
   const hasNomineeInfo = obj.nomineeName || obj.nomineeDOB;
   const amountToPay =
@@ -116,13 +117,11 @@ const Record = ({ obj }) => {
             >
               View Details
             </button>
-            <button
-              className="record-button"
-              onClick={() => handleSell(obj._id)}
-              style={{ marginLeft: "10px" }}
-            >
+            <Link to="/sellform">
+            <button className="record-button" style={{ marginLeft: "10px" }}>
               Sell
             </button>
+            </Link>
 
             <button
               className="record-delete-btn"

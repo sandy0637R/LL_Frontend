@@ -21,16 +21,6 @@ const recordsSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
-    addToSell: (state, action) => {
-      const record = state.data.find((item) => item._id === action.payload);
-      if (record) {
-        state.sell.push(record); // Add record to sell[]
-      }
-    },
-    removeFromSell: (state, action) => {
-      // Filter out the record from sell[] based on _id
-      state.sell = state.sell.filter((item) => item._id !== action.payload);
-    },
   },
 });
 
