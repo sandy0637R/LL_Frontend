@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Record.css";
 import axios from "axios";
 import { handleError, handleSuccess } from "../../utils/Utils";
-import { useNavigate , Link} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Record = ({ obj }) => {
   const navigate = useNavigate();
@@ -43,6 +43,34 @@ const Record = ({ obj }) => {
       navigate("/home");
     } catch (error) {
       console.error("Error deleting record:", error);
+    }
+  };
+
+  const handleSell = async (id) => {
+    try {
+      const token = localStorage.getItem("token");
+
+      console.log("Sending data to the server:", obj);
+
+      const response = await axios.post(
+        `http://localhost:8080/records/sell`,
+        obj,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      const { message } = response.data;
+      handleSuccess(message);
+      setTimeout(() => {
+        navigate("/sell");
+      }, 3000);
+    } catch (error) {
+      console.error("Error selling record:", error);
+      handleError("Failed to sell record");
     }
   };
 
@@ -117,11 +145,14 @@ const Record = ({ obj }) => {
             >
               View Details
             </button>
-            <Link to="/sellform">
-            <button className="record-button" style={{ marginLeft: "10px" }}>
+
+            <button
+              className="record-button"
+              style={{ marginLeft: "10px" }}
+              onClick={() => handleSell(obj._id)}
+            >
               Sell
             </button>
-            </Link>
 
             <button
               className="record-delete-btn"

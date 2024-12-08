@@ -22,7 +22,7 @@ import RefreshHandler from "./Components/Refresh";
 import Profile from "./Pages/Profile/Profile";
 import { ToastContainer } from "react-toastify";
 import Sell from "./Pages/Sell/Sell";
-import SellForm from "./Components/SellForm/SellForm";
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -84,10 +84,7 @@ function App() {
             element={<PrivateRoute element={<Profile />} />}
           />
           <Route path="/sell" element={<PrivateRoute element={<Sell />} />} />
-          <Route
-            path="/sellform"
-            element={<PrivateRoute element={<SellForm />} />}
-          />
+         
           {/* Public Routes */}
           <Route path="/login" element={<PublicRoute element={<Login />} />} />
           <Route
