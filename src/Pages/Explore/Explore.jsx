@@ -12,7 +12,7 @@ const Explore = () => {
   const fetchRecordsApi = async () => {
     const token = localStorage.getItem("token"); // Retrieve JWT token
     try {
-      const response = await axios.get(`https://land-lord.onrender.com/records/dummys`, {
+      const response = await axios.get(`http://localhost:8080/records/dummys`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

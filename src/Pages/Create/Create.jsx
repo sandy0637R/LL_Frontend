@@ -21,11 +21,11 @@ function Create() {
       console.error("Email not found in localStorage");
       return;
     }
-
+    handleSuccess('record is creating please wait !')
     try {
       const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
 
-      const response = await axios.post("https://land-lord.onrender.com/records/", formData, {
+      const response = await axios.post("http://localhost:8080/records/", formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Ensures proper handling of file uploads
           Authorization: `Bearer ${token}`, // Pass the token in the Authorization header

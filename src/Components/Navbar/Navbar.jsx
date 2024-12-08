@@ -16,6 +16,7 @@ const Navbar = () => {
   }, []); // Dependency array ensures this runs only once
 
   const handleLogout = (e) => {
+    
     handleSuccess("User Logged Out");
     localStorage.removeItem("token");
     localStorage.removeItem("loggedInUser");
@@ -121,7 +122,7 @@ const Navbar = () => {
             </button>
           )}
         </ul>
-        <ToastContainer />
+        <ToastContainer/>
       </div>
     </div>
   );

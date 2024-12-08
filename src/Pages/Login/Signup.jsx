@@ -17,7 +17,7 @@ function Signup() {
     const password = passwordref.current.value;
     const signupInfo = { name, email, password };
     try {
-      const response = await axios.post("https://land-lord.onrender.com/auth/signup", signupInfo);
+      const response = await axios.post("http://localhost:8080/auth/signup", signupInfo);
       const { success, message, error } = response.data;
 
       if (success) {
@@ -88,7 +88,7 @@ function Signup() {
           </div>
           {/* Signup Button */}
           <button
-            className="w-100 btn btn-primary rounded-pill py-2 mb-3"
+            className="w-100  rounded-pill py-2 mb-3 btn btn-primary"
             type="submit"
           >
             Sign Up

@@ -3,6 +3,7 @@ import "./Record.css";
 import axios from "axios";
 import { handleError, handleSuccess } from "../../utils/Utils";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
 const Record = ({ obj }) => {
   const navigate = useNavigate();
@@ -31,15 +32,14 @@ const Record = ({ obj }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `https://land-lord.onrender.com/records/${id}`,
+        `http://localhost:8080/records/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         }
       );
-      const { message } = response.data;
-      handleSuccess(message);
+      handleSuccess("record Deleted Successfully !");
       navigate("/home");
     } catch (error) {
       console.error("Error deleting record:", error);
@@ -49,8 +49,6 @@ const Record = ({ obj }) => {
   const handleSell = async (id) => {
     try {
       const token = localStorage.getItem("token");
-
-      console.log("Sending data to the server:", obj);
 
       const response = await axios.post(
         `http://localhost:8080/records/sell`,
@@ -62,12 +60,11 @@ const Record = ({ obj }) => {
           },
         }
       );
-
-      const { message } = response.data;
+const {message}=response.data
       handleSuccess(message);
       setTimeout(() => {
         navigate("/sell");
-      }, 3000);
+      }, 2000);
     } catch (error) {
       console.error("Error selling record:", error);
       handleError("Failed to sell record");
@@ -90,7 +87,7 @@ const Record = ({ obj }) => {
     try {
       const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
       const respnse = await axios.patch(
-        `https://land-lord.onrender.com/records/${id}`,
+        `http://localhost:8080/records/${id}`,
         formData,
         {
           headers: {
@@ -425,6 +422,7 @@ const Record = ({ obj }) => {
           </form>
         </div>
       )}
+      <ToastContainer/>
     </div>
   );
 };

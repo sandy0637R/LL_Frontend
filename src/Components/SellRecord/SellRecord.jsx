@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./SellRecord.css";
+import { handleSuccess } from "../../utils/Utils";
+import { ToastContainer } from "react-toastify";
 const SellRecord = () => {
   const [sellData, setSellData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -10,8 +12,9 @@ const SellRecord = () => {
     const fetchSellData = async () => {
       try {
         const token = localStorage.getItem("token");
+        const email = localStorage.getItem("email");
         const response = await axios.get(
-          "http://localhost:8080/records/sell/records",
+          `http://localhost:8080/records/sell/records/${email}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -31,6 +34,7 @@ const SellRecord = () => {
   }, []);
 
   const deleteSellRecord = async (id) => {
+    handleSuccess('Property Removed from sell')
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(`http://localhost:8080/records/sell/${id}`, {
@@ -94,7 +98,7 @@ const SellRecord = () => {
               <p>
                 <strong>Purchase Date:</strong> {record.purchaseDate || "N/A"}
               </p>
-              <button onClick={() => deleteSellRecord(record._id)}>
+              <button onClick={() => deleteSellRecord(record._id)} className="btn btn-danger">
                 Delete
               </button>
             </div>
@@ -103,6 +107,7 @@ const SellRecord = () => {
       ) : (
         <div>No sell records found</div>
       )}
+      <ToastContainer/>
     </div>
   );
 };
