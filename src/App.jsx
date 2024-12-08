@@ -20,8 +20,8 @@ import Create from "./Pages/Create/Create";
 import Signup from "./Pages/Login/Signup";
 import RefreshHandler from "./Components/Refresh";
 import Profile from "./Pages/Profile/Profile";
-import { ToastContainer } from "react-toastify";
 import Sell from "./Pages/Sell/Sell";
+import MyRecords from "./Components/SellRecord/MySellRecords";
 
 
 function App() {
@@ -84,6 +84,7 @@ function App() {
             element={<PrivateRoute element={<Profile />} />}
           />
           <Route path="/sell" element={<PrivateRoute element={<Sell />} />} />
+          <Route path="/Mysell" element={<PrivateRoute element={<MyRecords />} />} />
          
           {/* Public Routes */}
           <Route path="/login" element={<PublicRoute element={<Login />} />} />

@@ -62,7 +62,7 @@ const SellRecord = () => {
 
   return (
     <div>
-      <h1>Sell Records</h1>
+      <hr />
       {sellData.length > 0 ? (
         <div className="card-container">
           {sellData.map((record, index) => (
@@ -70,6 +70,9 @@ const SellRecord = () => {
               <h2>{record.title || "N/A"}</h2>
               <p>
                 <strong>Owner:</strong> {record.ownerName || "N/A"}
+              </p>
+              <p>
+                <strong>email:</strong> {record.email || "N/A"}
               </p>
               <p>
                 <strong>Property Type:</strong> {record.propertyType || "N/A"}
