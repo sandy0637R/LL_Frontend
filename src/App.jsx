@@ -21,7 +21,7 @@ import Signup from "./Pages/Login/Signup";
 import RefreshHandler from "./Components/Refresh";
 import Profile from "./Pages/Profile/Profile";
 import Sell from "./Pages/Sell/Sell";
-import MyRecords from "./Components/SellRecord/MySellRecords";
+import Workers from "./Pages/WorkerPage/Workers";
 
 
 function App() {
@@ -75,6 +75,7 @@ function App() {
           />
           <Route path="/help" element={<PrivateRoute element={<Help />} />} />
           <Route path="/plans" element={<PrivateRoute element={<Plans />} />} />
+          <Route path="/workers" element={<PrivateRoute element={<Workers />} />} />
           <Route
             path="/services"
             element={<PrivateRoute element={<Services />} />}
@@ -84,7 +85,6 @@ function App() {
             element={<PrivateRoute element={<Profile />} />}
           />
           <Route path="/sell" element={<PrivateRoute element={<Sell />} />} />
-          <Route path="/Mysell" element={<PrivateRoute element={<MyRecords />} />} />
          
           {/* Public Routes */}
           <Route path="/login" element={<PublicRoute element={<Login />} />} />

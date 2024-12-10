@@ -1,18 +1,23 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
-import recordsReducer from "../ReduxStore/reducer";
-import rootSaga from "../ReduxStore/rootSaga";
+import recordsReducer from "./reducer"; // Adjusted import path for consistency
+import rootSaga from "./rootSaga"; // Adjusted import path for consistency
 
+// Create the Saga middleware
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = configureStore({
+// Configure the Redux store
+const store = configureStore({
   reducer: {
-    records: recordsReducer,
+    records: recordsReducer, // Add your reducers here
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+    getDefaultMiddleware({
+      thunk: false, // Disable Thunk as we use Saga
+    }).concat(sagaMiddleware), // Add Saga middleware
 });
 
+// Run the root Saga
 sagaMiddleware.run(rootSaga);
 
 export default store;

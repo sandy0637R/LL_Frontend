@@ -36,9 +36,14 @@ const Home = () => {
                   Maintainence <i class="fa-solid fa-list"></i>
                 </button>
               </Link>
-              <Link to="/sell" className="home-link">
-                <button className="main-nav-btn">
+              <Link to="/sell" className="home-link" >
+                <button className="main-nav-btn" style={{width:"505px"}}>
                   Sell <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </Link>
+              <Link to="/workers" className="home-link">
+                <button className="main-nav-btn" style={{width:"505px"}}>
+                  Workers <i class="fa-solid fa-user-nurse"></i>
                 </button>
               </Link>
             </div>

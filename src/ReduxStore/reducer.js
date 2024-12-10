@@ -4,11 +4,13 @@ const recordsSlice = createSlice({
   name: "records",
   initialState: {
     data: [],
-    sell: [], // Array to hold sold records
+    sellRecords: [],
+    workerRecords: [],
     loading: false,
     error: null,
   },
   reducers: {
+    // Fetch records actions
     fetchRecordsRequest: (state) => {
       state.loading = true;
       state.error = null;
@@ -21,6 +23,46 @@ const recordsSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+
+    // Fetch sell records actions
+    fetchSellRecordsRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchSellRecordsSuccess: (state, action) => {
+      state.loading = false;
+      state.sellRecords = action.payload;
+    },
+    fetchSellRecordsFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+    // Fetch worker records actions
+    fetchWorkerRecordsRequest: (state) => {
+      state.loading = true;
+      state.error = null;
+    },
+    fetchWorkerRecordsSuccess: (state, action) => {
+      state.loading = false;
+      state.workerRecords = action.payload;
+    },
+    fetchWorkerRecordsFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
+
+    // Add item to sell records
+    addToSell: (state, action) => {
+      state.sellRecords.push(action.payload);
+    },
+
+    // Remove item from sell records
+    removeFromSell: (state, action) => {
+      state.sellRecords = state.sellRecords.filter(
+        (record) => record.id !== action.payload
+      );
+    },
   },
 });
 
@@ -28,8 +70,14 @@ export const {
   fetchRecordsRequest,
   fetchRecordsSuccess,
   fetchRecordsFailure,
+  fetchSellRecordsRequest,
+  fetchSellRecordsSuccess,
+  fetchSellRecordsFailure,
+  fetchWorkerRecordsRequest,
+  fetchWorkerRecordsSuccess,
+  fetchWorkerRecordsFailure,
   addToSell,
-  removeFromSell, // Export the remove action
+  removeFromSell,
 } = recordsSlice.actions;
 
 export default recordsSlice.reducer;

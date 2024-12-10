@@ -16,7 +16,6 @@ const Navbar = () => {
   }, []); // Dependency array ensures this runs only once
 
   const handleLogout = (e) => {
-    
     handleSuccess("User Logged Out");
     localStorage.removeItem("token");
     localStorage.removeItem("loggedInUser");
@@ -71,20 +70,20 @@ const Navbar = () => {
           ) : (
             <>
               <Link
+                to="/workers"
+                className={`link ${
+                  location.pathname === "/property" ? "active-link" : ""
+                }`}
+              >
+                <li className="nav-li">Workers</li>
+              </Link>
+              <Link
                 to="/property"
                 className={`link ${
                   location.pathname === "/property" ? "active-link" : ""
                 }`}
               >
                 <li className="nav-li">Properties</li>
-              </Link>
-              <Link
-                to="/create"
-                className={`link ${
-                  location.pathname === "/create" ? "active-link" : ""
-                }`}
-              >
-                <li className="nav-li">Add Property</li>
               </Link>
               <Link
                 to="/documents"
@@ -122,7 +121,7 @@ const Navbar = () => {
             </button>
           )}
         </ul>
-        <ToastContainer/>
+        <ToastContainer />
       </div>
     </div>
   );
