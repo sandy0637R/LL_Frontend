@@ -59,7 +59,20 @@ const SellRecord = () => {
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
-
+  const checkProperty=(type)=>{
+    if(type==='Residential'){
+      return 'https://plus.unsplash.com/premium_photo-1724659217647-4bfdba75e5a6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    }
+    else if(type==='Commercial'){
+      return'https://images.unsplash.com/photo-1656646424531-cc9041d3e5ca?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    }
+    else if(record.propertyType==='Agricultural'){
+      return 'https://images.unsplash.com/photo-1711397651462-3b2a22f5cfc8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+    }
+    else if(record.propertyType==='Industrial'){
+      return 'https://plus.unsplash.com/premium_photo-1677640957875-b004bb1c7b9b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aW5kdXN0cmlhbCUyMGxhbmR8ZW58MHx8MHx8fDA%3D'
+    }
+  }
   return (
     <div>
       <hr />
@@ -67,7 +80,9 @@ const SellRecord = () => {
         <div className="card-container">
           {sellData.map((record, index) => (
             <div className="card" key={index}>
+              <img src={checkProperty(record.propertyType)} alt="land image" className="img-fluid rounded shadow-sm w-100" />
               <h2>{record.title || "N/A"}</h2>
+
               <p>
                 <strong>Owner:</strong> {record.ownerName || "N/A"}
               </p>
