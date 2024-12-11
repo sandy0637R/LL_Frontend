@@ -1,0 +1,12 @@
+.workerpage-background {
+  background-color: var(--primary);
+  padding: 50px 0px;
+}
+.worker-main-heading {
+  color: var(--blue-shade);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.worker-containers {
+  margin: 50px 0px;
+}

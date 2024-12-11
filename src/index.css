@@ -9,6 +9,14 @@
   list-style: none;
 }
 
+body {
+  background-image: url("/assets/pexels-pixabay-162539.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
 :root {
   --dark_grey: rgb(27, 25, 25);
   --white: white;

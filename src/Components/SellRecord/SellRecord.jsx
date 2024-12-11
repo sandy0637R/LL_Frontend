@@ -34,7 +34,7 @@ const SellRecord = () => {
   }, []);
 
   const deleteSellRecord = async (id) => {
-    handleSuccess('Property Removed from sell')
+    handleSuccess("Property Removed from sell");
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(`http://localhost:8080/records/sell/${id}`, {
@@ -61,47 +61,61 @@ const SellRecord = () => {
   if (error) return <div>{error}</div>;
 
   return (
-    <div>
-      <hr />
+    <div className="sell-rec-main">
+      <h1 className="sell-rec-q-heading">Your Properties for Sale !!!</h1>
       {sellData.length > 0 ? (
-        <div className="card-container">
+        <div className="sell-card-container">
           {sellData.map((record, index) => (
-            <div className="card" key={index}>
-              <h2>{record.title || "N/A"}</h2>
-              <p>
-                <strong>Owner:</strong> {record.ownerName || "N/A"}
+            <div className="sell-card" key={index}>
+              <h2 className="sell-rec-title">{record.title || "N/A"}</h2>
+              <p className="sell-rec-p">
+                <span className="sell-rec-span"> Owner:</span>{" "}
+                {record.ownerName || "N/A"}
               </p>
-              <p>
-                <strong>email:</strong> {record.email || "N/A"}
+              <p className="sell-rec-p">
+                <span className="sell-rec-span">Email:</span>{" "}
+                {record.email || "N/A"}
               </p>
-              <p>
-                <strong>Property Type:</strong> {record.propertyType || "N/A"}
+              <p className="sell-rec-p">
+                <span className="sell-rec-span">Property Type:</span>{" "}
+                {record.propertyType || "N/A"}
               </p>
-              <p>
-                <strong>City:</strong> {record.city || "N/A"}
+              <p className="sell-rec-p">
+                <span className="sell-rec-span"> City:</span>{" "}
+                {record.city || "N/A"}
               </p>
-              <p>
-                <strong>Latitude:</strong> {record.latitude || "N/A"}
+              <p className="sell-rec-p">
+                <span className="sell-rec-span">Latitude:</span>{" "}
+                {record.latitude || "N/A"}
               </p>
-              <p>
-                <strong>Longitude:</strong> {record.longitude || "N/A"}
+              <p className="sell-rec-p">
+                <span className="sell-rec-span">Longitude:</span>{" "}
+                {record.longitude || "N/A"}
               </p>
-              <p>
-                <strong>Nominee:</strong> {record.nomineeName || "N/A"}
+              <p className="sell-rec-p">
+                <span className="sell-rec-span">Nominee:</span>{" "}
+                {record.nomineeName || "N/A"}
               </p>
-              <p>
-                <strong>Nominee DOB:</strong> {record.nomineeDOB || "N/A"}
+              <p className="sell-rec-p">
+                <span className="sell-rec-span">Nominee DOB:</span>{" "}
+                {record.nomineeDOB || "N/A"}
               </p>
-              <p>
-                <strong>Postcode:</strong> {record.postcode || "N/A"}
+              <p className="sell-rec-p">
+                <span className="sell-rec-span">Postcode:</span>{" "}
+                {record.postcode || "N/A"}
               </p>
-              <p>
-                <strong>Address:</strong> {record.additionalAddress || "N/A"}
+              <p className="sell-rec-p">
+                <span className="sell-rec-span">Address:</span>{" "}
+                {record.additionalAddress || "N/A"}
               </p>
-              <p>
-                <strong>Purchase Date:</strong> {record.purchaseDate || "N/A"}
+              <p className="sell-rec-p">
+                <span className="sell-rec-span">Purchase Date:</span>{" "}
+                {record.purchaseDate || "N/A"}
               </p>
-              <button onClick={() => deleteSellRecord(record._id)} className="btn btn-danger">
+              <button
+                onClick={() => deleteSellRecord(record._id)}
+                className="btn btn-danger"
+              >
                 Delete
               </button>
             </div>
@@ -110,7 +124,7 @@ const SellRecord = () => {
       ) : (
         <div>No sell records found</div>
       )}
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

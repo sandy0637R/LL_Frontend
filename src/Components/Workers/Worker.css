@@ -1,36 +1,99 @@
-/* Builder.css */
-.cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 20px;
-  }
-  
-  .card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width: 250px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .card img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
-  }
-  
-  .card-content {
-    padding: 10px;
-  }
-  
-  .card-title {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
+.worker-main {
+  background-color: var(--primary);
+  margin: 0px 40px;
+  padding: 0px 30px 30px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+.worker-head-sec {
+  display: flex;
+  padding: 20px 10px 0px 30px;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  margin: 0px 10px;
+}
+
+.worker-heading {
+  font-size: 2em;
+  margin-right: 20px;
+  color: var(--blue-shade);
+}
+
+.sort-dropdown {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+}
+
+#sort-options {
+  padding: 5px 18px;
+  font-size: 18px;
+  color: var(--white);
+  background-color: var(--secondary);
+  font-weight: 600;
+  outline: none;
+  border-radius: 4px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.worker-card-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 30px;
+  margin: 10px;
+}
+.workers-img {
+  width: 360px;
+  height: 300px;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.worker-card {
+  width: 360px;
+  height: 660px;
+  background-color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.worker-card-content {
+  padding: 20px;
+}
+
+.worker-info-label {
+  color: var(--blue-shade);
+  font-weight: 700;
+  font-size: 1.04em;
+}
+
+.worker-title {
+  color: var(--blue-shade);
+  font-size: 1.5em;
+  font-weight: 600;
+}
+
+.worker-info {
+  font-weight: 600;
+}
+
+.card-info-sec {
+  display: flex;
+  margin: 0px;
+  padding: 0px;
+}
+
+.worker-appointment-button {
+  background-color: var(--blue-shade);
+  padding: 5px 25px;
+  border: none;
+  font-weight: 600;
+  color: var(--white);
+  border-radius: 5px;
+}
+
+.worker-appointment-button:hover {
+  background-color: var(--blue-shade-dark);
+}

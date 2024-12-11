@@ -1,60 +1,49 @@
-.sell-background-img {
-  background-image: url("/assets/pexels-pixabay-162539.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}
-.sell-main-body {
-  background-color: var(--primary);
+.sell-main {
   padding: 50px 0px;
-}
-
-.sell-heading {
-  font-size: 2em;
-  color: var(--blue-shade);
-  font-weight: 600;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.sell-container {
-  padding: 20px;
-  background-color: #f9f9f9;
-}
-
-.sell-heading {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
+  background-color: var(--primary);
 }
 
 .properties-on-sale {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 20px;
+  background-color: var(--primary);
+  padding: 20px;
+  margin: 50px 10px 0px;
+  border-radius: 20px;
+  border: var(--border);
+}
+.sell-heading {
+  font-size: 2em;
+  color: var(--blue-shade);
 }
 
-.property-card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.sell-title {
+  color: var(--blue-shade);
+}
+.sell-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: var(--primary);
+  padding: 50px 20px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
 }
 
-.property-title {
-  font-size: 1.4rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+.sell-card {
+  background-color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  width: 330px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
 }
 
-.property-details p {
-  margin: 5px 0;
+.sell-span {
+  color: var(--blue-shade);
+  font-weight: 700;
+  font-size: 1.2;
 }
-
-.property-details strong {
-  font-weight: bold;
+.sell-p {
+  font-weight: 600;
 }
