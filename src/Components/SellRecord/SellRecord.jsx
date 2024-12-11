@@ -14,7 +14,7 @@ const SellRecord = () => {
         const token = localStorage.getItem("token");
         const email = localStorage.getItem("email");
         const response = await axios.get(
-          `http://localhost:8080/records/sell/records/${email}`,
+          `https://land-lord.onrender.com/records/sell/records/${email}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -37,7 +37,7 @@ const SellRecord = () => {
     handleSuccess("Property Removed from sell");
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:8080/records/sell/${id}`, {
+      const response = await fetch(`https://land-lord.onrender.com/records/sell/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -60,13 +60,33 @@ const SellRecord = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
+  const getPropertyImage = (propertyType) => {
+    switch (propertyType) {
+      case "Residential":
+        return "https://plus.unsplash.com/premium_photo-1724659217647-4bfdba75e5a6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+      case "Commercial":
+        return "https://images.unsplash.com/photo-1656646424531-cc9041d3e5ca?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+      case "Agricultural":
+        return "https://images.unsplash.com/photo-1711397651462-3b2a22f5cfc8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+      case "Industrial":
+        return "https://plus.unsplash.com/premium_photo-1677640957875-b004bb1c7b9b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aW5kdXN0cmlhbCUyMGxhbmR8ZW58MHx8MHx8fDA%3D";
+      default:
+        return "https://via.placeholder.com/150"; // Fallback image
+    }}
   return (
     <div className="sell-rec-main">
       <h1 className="sell-rec-q-heading">Your Properties for Sale !!!</h1>
       {sellData.length > 0 ? (
         <div className="sell-card-container">
           {sellData.map((record, index) => (
+            
             <div className="sell-card" key={index}>
+              <img
+  src={getPropertyImage(record.propertyType)}
+  alt="Property"
+  className="img-fluid rounded shadow-sm"
+/>
+
               <h2 className="sell-rec-title">{record.title || "N/A"}</h2>
               <p className="sell-rec-p">
                 <span className="sell-rec-span"> Owner:</span>{" "}

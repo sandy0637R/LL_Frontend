@@ -110,7 +110,7 @@ const DocRecord = ({ obj }) => {
                 {/* Display document content */}
                 <h6>{currentDoc.name}</h6>
                 <img
-                  src={`http://localhost:8080/${currentDoc.path}`}
+                  src={`https://land-lord.onrender.com/${currentDoc.path}`}
                   alt={currentDoc.name}
                   className="img-fluid doc-view-img"
                 />
@@ -124,7 +124,7 @@ const DocRecord = ({ obj }) => {
                 >
                   Back
                 </button>
-                <a href={`http://localhost:8080/${currentDoc.path}`} download>
+                <a href={`https://land-lord.onrender.com/${currentDoc.path}`} download>
                   <button className="doc-button"><i class="fa-solid fa-download"></i></button>
                 </a>
               </div>

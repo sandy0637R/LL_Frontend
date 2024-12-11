@@ -17,7 +17,7 @@ function Signup() {
     const password = passwordref.current.value;
     const signupInfo = { name, email, password };
     try {
-      const response = await axios.post("http://localhost:8080/auth/signup", signupInfo);
+      const response = await axios.post("https://land-lord.onrender.com/auth/signup", signupInfo);
       const { success, message, error } = response.data;
 
       if (success) {

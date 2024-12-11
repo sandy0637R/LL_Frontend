@@ -6,7 +6,7 @@ export const fetchRecordsApi = async () => {
   const email = localStorage.getItem("email");
 
   try {
-    const response = await axios.get(`http://localhost:8080/records/${email}`, {
+    const response = await axios.get(`https://land-lord.onrender.com/records/${email}`, {
       headers: {
         Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
       },
@@ -21,7 +21,7 @@ export const fetchRecordsApi = async () => {
 // Fetch all sell records
 export const getAllSellRecordsAPI = async (token) => {
   try {
-    const response = await axios.get("http://localhost:8080/records/sell/records/", {
+    const response = await axios.get("https://land-lord.onrender.com/records/sell/records/", {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data;
@@ -34,7 +34,7 @@ export const getAllSellRecordsAPI = async (token) => {
 // Fetch worker records
 export const getWorkerRecordsAPI = async (token) => {
   try {
-    const response = await axios.get("http://localhost:8080/records/workers", {
+    const response = await axios.get("https://land-lord.onrender.com/records/workers", {
       headers: { Authorization: `Bearer ${token}` },
     });
     return response.data;

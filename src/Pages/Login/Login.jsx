@@ -15,7 +15,7 @@ function Login() {
     const password = passwordref.current.value;
     const loginInfo = { email, password };
     try {
-      const response = await axios.post("http://localhost:8080/auth/login", loginInfo);
+      const response = await axios.post("https://land-lord.onrender.com/auth/login", loginInfo);
       const { success, message, jwtToken, name, email, error } = response.data;
 
       if (success) {

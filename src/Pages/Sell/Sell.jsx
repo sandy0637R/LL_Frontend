@@ -13,7 +13,19 @@ const Sell = () => {
   useEffect(() => {
     dispatch(fetchSellRecordsRequest());
   }, [dispatch]);
-
+  const getPropertyImage = (propertyType) => {
+    switch (propertyType) {
+      case "Residential":
+        return "https://plus.unsplash.com/premium_photo-1724659217647-4bfdba75e5a6?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+      case "Commercial":
+        return "https://images.unsplash.com/photo-1656646424531-cc9041d3e5ca?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+      case "Agricultural":
+        return "https://images.unsplash.com/photo-1711397651462-3b2a22f5cfc8?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+      case "Industrial":
+        return "https://plus.unsplash.com/premium_photo-1677640957875-b004bb1c7b9b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8aW5kdXN0cmlhbCUyMGxhbmR8ZW58MHx8MHx8fDA%3D";
+      default:
+        return "https://via.placeholder.com/150"; // Fallback image
+    }}
   return (
     <div className="sell-main">
       <div className="user-rec-sec">
@@ -29,6 +41,12 @@ const Sell = () => {
           {sellRecords && sellRecords.length > 0 ? (
             sellRecords.map((record) => (
               <div className="sell-card" key={record._id.$oid}>
+                 <img
+  src={getPropertyImage(record.propertyType)}
+  alt="Property"
+  className="img-fluid rounded shadow-sm"
+/>
+
                 <h2 className="sell-title">{record.title || "N/A"}</h2>
                 <p className="sell-p">
                   <span className="sell-span"> Owner:</span>{" "}
@@ -74,12 +92,7 @@ const Sell = () => {
                   <span className="sell-span">Purchase Date:</span>{" "}
                   {record.purchaseDate || "N/A"}
                 </p>
-                <button
-                  onClick={() => deleteSellRecord(record._id)}
-                  className="btn btn-danger"
-                >
-                  Delete
-                </button>
+             
               </div>
             ))
           ) : (

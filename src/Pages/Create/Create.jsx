@@ -25,7 +25,7 @@ function Create() {
     try {
       const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
 
-      const response = await axios.post("http://localhost:8080/records/", formData, {
+      const response = await axios.post("https://land-lord.onrender.com/records/", formData, {
         headers: {
           "Content-Type": "multipart/form-data", // Ensures proper handling of file uploads
           Authorization: `Bearer ${token}`, // Pass the token in the Authorization header
@@ -42,10 +42,10 @@ function Create() {
 
   return (
     <div className="container p-5">
-      <form className="row g-3" onSubmit={handleSubmit}>
+      <form className="row g-3 bg-white p-5" onSubmit={handleSubmit}>
         {/* Map Component */}
         <div className="col-12">
-          <label htmlFor="map" className="form-label">
+          <label htmlFor="map" className="form-label w-100 text-center">
             Map
           </label>
           <MapComponent />

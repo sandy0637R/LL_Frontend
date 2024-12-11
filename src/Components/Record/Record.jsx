@@ -32,7 +32,7 @@ const Record = ({ obj }) => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.delete(
-        `http://localhost:8080/records/${id}`,
+        `https://land-lord.onrender.com/records/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ const Record = ({ obj }) => {
       const token = localStorage.getItem("token");
 
       const response = await axios.post(
-        `http://localhost:8080/records/sell`,
+        `https://land-lord.onrender.com/records/sell`,
         obj,
         {
           headers: {
@@ -87,7 +87,7 @@ const {message}=response.data
     try {
       const token = localStorage.getItem("token"); // Retrieve the JWT token from localStorage
       const respnse = await axios.patch(
-        `http://localhost:8080/records/${id}`,
+        `https://land-lord.onrender.com/records/${id}`,
         formData,
         {
           headers: {
