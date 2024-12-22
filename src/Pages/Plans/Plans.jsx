@@ -1,5 +1,6 @@
 import React from "react";
 import PlanCard from "./PlanCard";
+import DevelopersSection from "./About";
 
 const plansData = [
   {
@@ -140,6 +141,7 @@ const Plans = () => {
           </div>
         </div>
       </div>
+      <DevelopersSection />
     </div>
   );
 };
